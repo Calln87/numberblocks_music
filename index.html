@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>넘버블럭스 노래 & 가사 모음 | Numberblocks Songs & Lyrics</title>
+  <style>
+    :root {
+      --bg-page: #f5f7fb;
+      --bg-card: #ffffff;
+      --bg-muted: #eef2f9;
+      --text-main: #1d2433;
+      --text-sub: #596579;
+      --border: #dde3ee;
+      --primary: #e62429;
+      --accent-blue: #1877f2;
+      --accent-green: #1db954;
+      --accent-yellow: #ffb703;
+      --accent-purple: #7b2cbf;
+      --shadow-sm: 0 2px 8px rgba(20, 32, 60, 0.06);
+      --shadow-md: 0 8px 24px rgba(20, 32, 60, 0.10);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Rainbow Block Bar */
+    .rainbow-bar {
+      height: 8px;
+      background: linear-gradient(
+        90deg,
+        #e62429 0% 14.28%,
+        #ff7b00 14.28% 28.56%,
+        #ffd000 28.56% 42.84%,
+        #2ec44d 42.84% 57.12%,
+        #1890ff 57.12% 71.40%,
+        #5b3cc4 71.40% 85.68%,
+        #b538d5 85.68% 100%
+      );
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-blocks {
+      display: grid;
+      grid-template-columns: repeat(3, 14px);
+      gap: 3px;
+    }
+
+    .brand-blocks span {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      display: block;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-title h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-title p {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    /* Controls Bar */
+    .controls-wrap {
+      max-width: 1280px;
+      width: 100%;
+      margin: 1.25rem auto 0;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1 1 320px;
+      max-width: 540px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 2.6rem 0.8rem 2.6rem;
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.96rem;
+      background: var(--bg-card);
+      color: var(--text-main);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.95rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-sub);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: var(--bg-muted);
+      color: var(--text-sub);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .clear-btn.visible {
+      display: inline-flex;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .segmented {
+      display: inline-flex;
+      background: var(--bg-muted);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    .segmented button {
+      border: none;
+      background: transparent;
+      padding: 0.42rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .segmented button.active {
+      background: var(--bg-card);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Main Workspace Layout */
+    main {
+      max-width: 1280px;
+      width: 100%;
+      margin: 1.25rem auto 2.5rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      flex: 1;
+    }
+
+    /* Song List Sidebar */
+    .song-list-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 190px);
+      position: sticky;
+      top: 96px;
+    }
+
+    .panel-header {
+      padding: 0.9rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fafbfe;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .song-list {
+      overflow-y: auto;
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .song-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      width: 100%;
+    }
+
+    .song-item:hover {
+      background: var(--bg-muted);
+    }
+
+    .song-item.active {
+      background: #eef5ff;
+      border-color: #9ec5fe;
+    }
+
+    .number-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .song-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .song-title-en {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-title-ko {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .lang-pill {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .lang-pill.bilingual {
+      background: #e3fcef;
+      color: #0b6e3f;
+    }
+
+    .lang-pill.en-only {
+      background: #fff3cd;
+      color: #8a5300;
+    }
+
+    /* Lyrics Viewer Panel */
+    .lyrics-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 1.75rem 2rem;
+      min-height: 520px;
+    }
+
+    .lyrics-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.15rem;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px dashed var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .lyrics-hero-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22);
+      flex-shrink: 0;
+    }
+
+    .hero-titles h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .hero-titles .subtitle-ko {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-top: 0.2rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      background: var(--bg-muted);
+      color: var(--text-sub);
+    }
+
+    .en-only-notice {
+      background: #fff8e6;
+      border: 1px solid #ffd57e;
+      color: #7c4d00;
+      padding: 0.85rem 1.1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Lyrics Grid */
+    .lyrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .lyrics-grid.single-col {
+      grid-template-columns: 1fr;
+    }
+
+    .lyrics-col {
+      background: #fafbfe;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.5rem;
+    }
+
+    .lyrics-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stanza {
+      margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      white-space: pre-line;
+      color: var(--text-main);
+    }
+
+    .stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-sub);
+    }
+
+    .empty-state h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    @media (max-width: 920px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      .song-list-panel {
+        position: static;
+        max-height: 340px;
+      }
+      .lyrics-grid {
+        grid-template-columns: 1fr;
+      }
+      .lyrics-panel {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="rainbow-bar"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-blocks" aria-hidden="true">
+          <span style="background:#e62429"></span>
+          <span style="background:#ff7b00"></span>
+          <span style="background:#ffd000"></span>
+          <span style="background:#2ec44d"></span>
+          <span style="background:#1890ff"></span>
+          <span style="background:#7b2cbf"></span>
+        </div>
+        <div class="brand-title">
+          <h1>넘버블럭스 노래 &amp; 가사 모음</h1>
+          <p>Numberblocks Songs &amp; Lyrics Explorer (EN / KO Bilingual &amp; EN-Only)</p>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="segmented" role="group" aria-label="가사 표시 언어 선택">
+          <button type="button" class="lang-mode-btn active" data-mode="both">EN + 한글 함께</button>
+          <button type="button" class="lang-mode-btn" data-mode="en">English Only</button>
+          <button type="button" class="lang-mode-btn" data-mode="ko">한글 가사만</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="controls-wrap" aria-label="노래 검색 및 필터">
+    <div class="search-box">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="노래 제목(영/한), 숫자(1~100), 가사 키워드로 검색하세요..."
+        autocomplete="off"
+      />
+      <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="검색어 지우기">&times;</button>
+    </div>
+
+    <div class="filter-group">
+      <div class="segmented" role="group" aria-label="수록곡 언어 필터">
+        <button type="button" class="catalog-filter-btn active" data-filter="all">전체 곡</button>
+        <button type="button" class="catalog-filter-btn" data-filter="bilingual">한/영 완비</button>
+        <button type="button" class="catalog-filter-btn" data-filter="en-only">영어 전용 포함곡</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <aside class="song-list-panel" aria-label="노래 목록">
+      <div class="panel-header">
+        <span>수록곡 목록</span>
+        <span id="songCountBadge">0곡</span>
+      </div>
+      <div id="songListContainer" class="song-list" role="listbox" aria-label="넘버블럭스 노래 선택"></div>
+    </aside>
+
+    <section id="lyricsViewer" class="lyrics-panel" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    Numberblocks Fan Lyrics Explorer &bull; Zero-Dependency Single HTML Application (EN / KO)
+  </footer>
+
+  <script>
+    const SONGS_DATA = [
+      {
+        id: "theme-song",
+        numberLabel: "1-10",
+        color: "linear-gradient(135deg, #e62429, #ff7b00, #2ec44d, #1890ff)",
+        titleEn: "Numberblocks Theme Song",
+        titleKo: "넘버블럭스 오프닝 테마송",
+        season: "Theme / 오프닝",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two, three, four, five!\nNumberblocks!\nSix, seven, eight, nine, ten!\nNumberblocks!",
+          "One, and another one is two!\nAnd another one is me — that's three!\nFive, four, three, two, one —\nTime for some number fun!",
+          "You can count on us,\nWe're the Numberblocks!"
+        ],
+        lyricsKo: [
+          "하나, 둘, 셋, 넷, 다섯!\n넘버블럭스!\n여섯, 일곱, 여덟, 아홉, 열!\n넘버블럭스!",
+          "일에 일을 더하면 이!\n거기에 일을 더하면 나 — 바로 삼!\n오, 사, 삼, 이, 일 —\n신나는 숫자 놀이 시간!",
+          "우리를 믿어봐,\n우린 넘버블럭스!"
+        ]
+      },
+      {
+        id: "one-wonderful-world",
+        numberLabel: "1",
+        color: "#e62429",
+        titleEn: "One (One Wonderful World)",
+        titleKo: "원 (하나뿐인 멋진 세상)",
+        season: "Season 1",
+        hasKorean: true,
+        lyricsEn: [
+          "One sun in the sky,\nOne boat sailing by,\nOne cloud floating high,\nOne me — I am One!",
+          "One wonderful world,\nAnd one me!\nOne bird in a tree,\nOne whale in the sea,\nOne wonderful world and one me!"
+        ],
+        lyricsKo: [
+          "하늘에 떠 있는 해님도 하나,\n지나가는 조각배도 하나,\n높이 떠 있는 구름도 하나,\n나도 하나 — 나는 원(1)이야!",
+          "하나뿐인 멋진 세상,\n그리고 하나뿐인 나!\n나무 위의 새도 한 마리,\n바다 속 고래도 한 마리,\n하나뿐인 멋진 세상과 나!"
+        ]
+      },
+      {
+        id: "two-better-than-one",
+        numberLabel: "2",
+        color: "#ff7b00",
+        titleEn: "Two (Two Shoes / Better Than One)",
+        titleKo: "투 (둘이서 함께라면)",
+        season: "Season 1",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two! One, two!\nLook at my dancing shoes!\nLeft foot, right foot, tap, tap, tap,\nTwo hands ready to clap, clap, clap!",
+          "Two is better than one,\nTwice as much of the fun!\nBicycle wheels and wings on a plane,\nWait a second, let's dance again!"
+        ],
+        lyricsKo: [
+          "하나, 둘! 하나, 둘!\n내 춤추는 신발 두 짝을 봐!\n왼발, 오른발, 탭, 탭, 탭,\n두 손으로 신나게 짝, 짝, 짝!",
+          "혼자보다 둘이 더 좋아,\n즐거움도 두 배가 되지!\n자전거 바퀴 두 개, 비행기 날개도 두 개,\n잠깐만, 우리 다시 춤춰볼까!"
+        ]
+      },
+      {
+        id: "three-magic-number",
+        numberLabel: "3",
+        color: "#f4b400",
+        titleEn: "Three (Look at Me!)",
+        titleKo: "쓰리 (나를 봐요, 하나 둘 셋!)",
+        season: "Season 1",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two, three — everybody look at me!\nJuggling balls: one, two, three!\nThree little pigs and three blind mice,\nThree is a number that's extra nice!",
+          "A triangle has three corners,\nOne, two, three — ta-da!\nEverything works in threes,\nThe finest number by far!"
+        ],
+        lyricsKo: [
+          "하나, 둘, 셋 — 모두 나를 봐요!\n저글링 공이 하나, 둘, 셋!\n아기 돼지 삼형제, 눈먼 생쥐 세 마리,\n삼(3)은 정말이지 최고로 멋진 숫자야!",
+          "삼각형의 꼭짓점도 세 개,\n하나, 둘, 셋 — 짜잔!\n모든 건 셋이 모이면 완벽해,\n세상에서 제일가는 숫자 삼!"
+        ]
+      },
+      {
+        id: "four-on-the-floor",
+        numberLabel: "4",
+        color: "#2ec44d",
+        titleEn: "Four (I Like to Be Square)",
+        titleKo: "포 (나는 네모가 좋아)",
+        season: "Season 1",
+        hasKorean: true,
+        lyricsEn: [
+          "I am Four, have we met before?\nFour corners, four equal sides,\nFour wheels on a car for bumpy rides!",
+          "Two and two make four,\nFour legs on a table, four corners on a door,\nIt's great to be a square —\nSquares are everywhere!"
+        ],
+        lyricsKo: [
+          "나는 포(4)야, 우리 전에 만났던가?\n네 개의 모서리, 똑같은 길이의 네 변,\n덜컹거리는 자동차 바퀴도 네 개!",
+          "둘 더하기 둘은 넷,\n식탁 다리도 네 개, 문 모서리도 네 개,\n정사각형이 되는 건 정말 멋져 —\n네모는 어디에나 있거든!"
+        ]
+      },
+      {
+        id: "five-high-five",
+        numberLabel: "5",
+        color: "#1890ff",
+        titleEn: "Five (High Five!)",
+        titleKo: "파이브 (하이파이브!)",
+        season: "Season 1",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two, three, four, five!\nCome on and give me a high five!\nFive fingers on my hand,\nPlaying in a rockstar band!",
+          "Five points on a shining star,\nStrumming on my five-string guitar!\nHigh five, up above,\nFive is the number that you love!"
+        ],
+        lyricsKo: [
+          "하나, 둘, 셋, 넷, 다섯!\n이리 와서 나랑 하이파이브 해!\n내 손가락은 다섯 개,\n멋진 록스타 밴드에서 연주하지!",
+          "반짝이는 별의 꼭짓점도 다섯 개,\n신나게 기타를 쳐볼까!\n높이 손을 들어 하이파이브,\n모두가 사랑하는 숫자 파이브(5)!"
+        ]
+      },
+      {
+        id: "six-roll-the-dice",
+        numberLabel: "6",
+        color: "#5b3cc4",
+        titleEn: "Six (Roll the Dice)",
+        titleKo: "식스 (주사위를 굴려요)",
+        season: "Season 2",
+        hasKorean: true,
+        lyricsEn: [
+          "Throw the dice, roll a six!\nI've got six fantastic tricks!\nOne, two, three, four, five, six spots,\nA cube has six faces and lots of dots!",
+          "Three and three, or four and two,\nFive and one — how do you do?\nLet's play a game, it's twice as nice,\nWhen Numberblock Six rolls the dice!"
+        ],
+        lyricsKo: [
+          "주사위를 던져 식스(6)를 만들어봐!\n신기한 여섯 가지 재주가 있지!\n하나, 둘, 셋, 넷, 다섯, 여섯 개의 점,\n정육면체의 면도 여섯 개야!",
+          "삼 더하기 삼, 또는 사 더하기 이,\n오 더하기 일 — 반가워 친구들!\n함께 게임을 시작해 볼까,\n넘버블럭 식스가 주사위를 굴릴 시간!"
+        ]
+      },
+      {
+        id: "seven-lucky-rainbow",
+        numberLabel: "7",
+        color: "linear-gradient(135deg,#e62429,#ff7b00,#ffd000,#2ec44d,#1890ff,#5b3cc4,#b538d5)",
+        titleEn: "Seven (Lucky Number Seven)",
+        titleKo: "세븐 (행운의 무지개 숫자 7)",
+        season: "Season 2",
+        hasKorean: true,
+        lyricsEn: [
+          "Red and orange, yellow, green,\nThe luckiest number you've ever seen!\nBlue and indigo, violet too,\nSeven rainbow colors shining through!",
+          "Seven days are in a week,\nRain or shine, the sun will peek!\nEverything turns out alright,\nWith lucky Seven shining bright!"
+        ],
+        lyricsKo: [
+          "빨강, 주황, 노랑, 초록,\n세상에서 가장 행운이 넘치는 숫자!\n파랑, 남색, 보라색까지,\n일곱 빛깔 무지개가 반짝이네!",
+          "일주일은 모두 칠(7)일,\n비가 오나 눈이 오나 해님이 방긋!\n모든 일이 술술 잘 풀릴 거야,\n행운의 세븐이 밝게 빛나니까!"
+        ]
+      },
+      {
+        id: "eight-octoblock",
+        numberLabel: "8",
+        color: "#d63384",
+        titleEn: "Eight (Octoblock, Assemble!)",
+        titleKo: "옥토블럭 에잇 (출동, 옥토블럭!)",
+        season: "Season 2",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two, three, four, five, six, seven, eight!\nOctoblock is feeling great!\nI can swim, I can climb, I can jugg-le eight,\nWhen you need a hero, I won't be late!",
+          "Eight strong arms and eight quick legs,\nWalking like a spider or scrambling eggs!\nOctoblock, command:1, 2, 3, 4, 5, 6, 7, 8!"
+        ],
+        lyricsKo: [
+          "일, 이, 삼, 사, 오, 육, 칠, 팔!\n옥토블럭 에잇(8)이 나가신다!\n수영도 척척, 오르기도 척척, 여덟 팔로 저글링도 척척,\n영웅이 필요할 때 언제든 달려가지!",
+          "든든한 팔이 여덟, 빠른 다리도 여덟,\n거미처럼 달리고 멋지게 도와주지!\n옥토블럭, 출동! 1, 2, 3, 4, 5, 6, 7, 8!"
+        ]
+      },
+      {
+        id: "ten-rocket",
+        numberLabel: "10",
+        color: "#e62429",
+        titleEn: "Ten (Blast Off!)",
+        titleKo: "텐 (로켓 발사 카운트다운!)",
+        season: "Season 2",
+        hasKorean: true,
+        lyricsEn: [
+          "One, two, three, four, five, six, seven, eight, nine, ten!\nI am Ten — that's ten Ones!\nCount down with me to the stars above:\nTen, nine, eight, seven, six!",
+          "Five, four, three, two, one — BLAST OFF!\nUp in space, flying high,\nA shooting star across the sky,\nTen is one Ten and zero Ones!"
+        ],
+        lyricsKo: [
+          "일, 이, 삼, 사, 오, 육, 칠, 팔, 구, 십!\n나는 텐(10) — 원(1)이 열 개 모인 숫자!\n별들을 향해 함께 카운트다운 해볼까:\n십, 구, 팔, 칠, 육!",
+          "오, 사, 삼, 이, 일 — 발사!\n우주 높이 날아올라,\n밤하늘을 가르는 별똥별처럼,\n텐은 십(10)이 하나, 일(1)은 영!"
+        ]
+      },
+      {
+        id: "twelve-rectangle-rays",
+        numberLabel: "12",
+        color: "#ff6b35",
+        titleEn: "Twelve (Super Rectangle)",
+        titleKo: "트웰브 (슈퍼 직사각형의 마법)",
+        season: "Season 3",
+        hasKorean: true,
+        lyricsEn: [
+          "One by twelve, or two by six,\nThree by four — check out my Arrays!\nTurn and split, rearrange the mix,\nTwelve can stand in so many ways!",
+          "Ten and two, or six and six,\nThree fours standing in a row,\nSuper Rectangle on the go!"
+        ],
+        lyricsKo: [
+          "1 곱하기 12, 아니면 2 곱하기 6,\n3 곱하기 4 — 내 멋진 배열(어레이)을 봐!\n돌리고 나누고 새롭게 줄 맞춰 서면,\n트웰브(12)는 정말 다양한 직사각형이 돼!",
+          "십과 이, 또는 육 더하기 육,\n사(4)가 세 줄로 나란히 서면,\n슈퍼 직사각형 출동이다!"
+        ]
+      },
+      {
+        id: "numberblobs-song",
+        numberLabel: "Blobs",
+        color: "#845ec2",
+        titleEn: "The Numberblobs Song",
+        titleKo: "넘버블롭스 노래 (English Only)",
+        season: "Special Song",
+        hasKorean: false,
+        lyricsEn: [
+          "We are the Numberblobs, bouncing all day,\nHelping the Numberblocks count as they play!\nOne blob, two blobs, three blobs, four,\nEvery time you count us, there's always room for more!",
+          "Red blobs, orange blobs, yellow and green,\nThe bounciest counters that you've ever seen!\nCount us in a circle, count us in a line,\nWith the Numberblobs around, counting's mighty fine!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "whats-the-difference",
+        numberLabel: "- / +",
+        color: "#00897b",
+        titleEn: "What's the Difference?",
+        titleKo: "차이가 얼마일까? (English Only)",
+        season: "Season 3 Special",
+        hasKorean: false,
+        lyricsEn: [
+          "What's the difference between me and you?\nLine us up side by side to see what is true!\nBetween Seven and Five, the difference is Two,\nSeven take away Five leaves Two in view!",
+          "Compare the blocks, how many more?\nBetween Nine and Five, the difference is Four!\nStand next to each other and count up the gap,\nFinding the difference is easy as a snap!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "sign-of-the-times",
+        numberLabel: "×",
+        color: "#3f51b5",
+        titleEn: "Sign of the Times (Multiplication)",
+        titleKo: "곱셈의 기호 (English Only)",
+        season: "Season 4",
+        hasKorean: false,
+        lyricsEn: [
+          "No need to add them one by one,\nMultiplication gets it done!\nThree lots of two, that's three times two,\nSix is waiting there for you!",
+          "Rows and columns, neat and tight,\nTimes table magic shining bright!\nIt's the Sign of the Times — multiply away,\nMaking bigger numbers every single day!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "one-hundred-big-one",
+        numberLabel: "100",
+        color: "#c1121f",
+        titleEn: "The Big One (One Hundred)",
+        titleKo: "원 헌드레드 (커다란 백, 100!)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "Ten tens marching in a giant square,\nTen by ten, with blocks to spare!\nFrom One all the way to One Hundred high,\nWe can reach right up to the sky!",
+          "Ten, twenty, thirty, forty, fifty,\nSixty, seventy, eighty, ninety, ONE HUNDRED!\nA hundredOnes inside of me,\nThe biggest square you'll ever see!"
+        ],
+        lyricsKo: [
+          "열(10)이 열 개 모여 거대한 정사각형 행진,\n가로도 열 칸, 세로도 열 칸!\n일(1)부터 시작해 백(100)까지 차곡차곡,\n하늘 끝까지 닿을 수 있어!",
+          "십, 이십, 삼십, 사십, 오십,\n육십, 칠십, 팔십, 구십, 백(100)!\n내 안에는 원(1)이 백 개나 들어있지,\n세상에서 가장 듬직한 정사각형 원 헌드레드!"
+        ]
+      }
+    ];
+
+    const state = {
+      searchQuery: "",
+      langMode: "both",       // 'both' | 'en' | 'ko'
+      catalogFilter: "all",   // 'all' | 'bilingual' | 'en-only'
+      selectedSongId: SONGS_DATA[0].id
+    };
+
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    const songListContainer = document.getElementById("songListContainer");
+    const songCountBadge = document.getElementById("songCountBadge");
+    const lyricsViewer = document.getElementById("lyricsViewer");
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function getFilteredSongs() {
+      const q = state.searchQuery.trim().toLowerCase();
+      return SONGS_DATA.filter((song) => {
+        if (state.catalogFilter === "bilingual" && !song.hasKorean) return false;
+        if (state.catalogFilter === "en-only" && song.hasKorean) return false;
+
+        if (!q) return true;
+        const haystack = [
+          song.numberLabel,
+          song.titleEn,
+          song.titleKo,
+          song.season,
+          ...(song.lyricsEn || []),
+          ...(song.lyricsKo || [])
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(q);
+      });
+    }
+
+    function renderSongList() {
+      const filtered = getFilteredSongs();
+      songCountBadge.textContent = `${filtered.length}곡`;
+
+      if (filtered.length === 0) {
+        songListContainer.innerHTML = `
+          <div class="empty-state">
+            <h3>검색 결과가 없습니다</h3>
+            <p>다른 숫자나 노래 제목, 가사 단어로 검색해 보세요.</p>
+          </div>
+        `;
+        lyricsViewer.innerHTML = `
+          <div class="empty-state">
+            <h3>선택된 노래가 없습니다</h3>
+            <p>검색 조건을 변경하거나 전체 곡 필터를 선택해 주세요.</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (!filtered.some((s) => s.id === state.selectedSongId)) {
+        state.selectedSongId = filtered[0].id;
+      }
+
+      songListContainer.innerHTML = filtered
+        .map((song) => {
+          const isActive = song.id === state.selectedSongId;
+          const badgeClass = song.hasKorean ? "bilingual" : "en-only";
+          const badgeText = song.hasKorean ? "EN·한글" : "EN Only";
+          return `
+            <button
+              type="button"
+              class="song-item ${isActive ? "active" : ""}"
+              data-song-id="${escapeHtml(song.id)}"
+              role="option"
+              aria-selected="${isActive}"
+            >
+              <div class="number-badge" style="background:${song.color}">
+                ${escapeHtml(song.numberLabel)}
+              </div>
+              <div class="song-meta">
+                <div class="song-title-en">${escapeHtml(song.titleEn)}</div>
+                <div class="song-title-ko">${escapeHtml(song.titleKo)}</div>
+              </div>
+              <span class="lang-pill ${badgeClass}">${badgeText}</span>
+            </button>
+          `;
+        })
+        .join("");
+
+      renderLyricsViewer();
+    }
+
+    function renderLyricsViewer() {
+      const song = SONGS_DATA.find((s) => s.id === state.selectedSongId);
+      if (!song) return;
+
+      const showEn = state.langMode === "both" || state.langMode === "en" || (!song.hasKorean && state.langMode === "ko");
+      const showKo = (state.langMode === "both" || state.langMode === "ko") && song.hasKorean;
+      const isSingleCol = !(showEn && showKo);
+
+      const enOnlyNoticeHtml = !song.hasKorean
+        ? `<div class="en-only-notice">
+             <span>&#9432;</span>
+             <span>이 곡은 <strong>영어 전용(English-Only)</strong> 수록곡입니다. 한글 가사 대신 원어(English) 가사가 표시됩니다.</span>
+           </div>`
+        : "";
+
+      const enColHtml = showEn
+        ? `<div class="lyrics-col">
+             <div class="lyrics-col-header">
+               <span>English Lyrics</span>
+               <span>EN</span>
+             </div>
+             ${song.lyricsEn.map((stanza) => `<p class="stanza">${escapeHtml(stanza)}</p>`).join("")}
+           </div>`
+        : "";
+
+      const koColHtml = showKo
+        ? `<div class="lyrics-col">
+             <div class="lyrics-col-header">
+               <span>한국어 가사</span>
+               <span>KO</span>
+             </div>
+             ${song.lyricsKo.map((stanza) => `<p class="stanza">${escapeHtml(stanza)}</p>`).join("")}
+           </div>`
+        : "";
+
+      lyricsViewer.innerHTML = `
+        <div class="lyrics-hero">
+          <div class="lyrics-hero-left">
+            <div class="hero-badge" style="background:${song.color}">
+              ${escapeHtml(song.numberLabel)}
+            </div>
+            <div class="hero-titles">
+              <h2>${escapeHtml(song.titleEn)}</h2>
+              <div class="subtitle-ko">${escapeHtml(song.titleKo)}</div>
+              <div class="hero-tags">
+                <span class="tag">${escapeHtml(song.season)}</span>
+                <span class="tag">${song.hasKorean ? "영어 + 한국어 가사 지원" : "English Only (영어 전용)"}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        ${enOnlyNoticeHtml}
+        <div class="lyrics-grid ${isSingleCol ? "single-col" : ""}">
+          ${enColHtml}
+          ${koColHtml}
+        </div>
+      `;
+    }
+
+    // Event bindings
+    searchInput.addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      clearSearchBtn.classList.toggle("visible", state.searchQuery.length > 0);
+      renderSongList();
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+      state.searchQuery = "";
+      searchInput.value = "";
+      clearSearchBtn.classList.remove("visible");
+      searchInput.focus();
+      renderSongList();
+    });
+
+    songListContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest(".song-item");
+      if (!btn) return;
+      state.selectedSongId = btn.dataset.songId;
+      renderSongList();
+    });
+
+    document.querySelectorAll(".lang-mode-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".lang-mode-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.langMode = btn.dataset.mode;
+        renderLyricsViewer();
+      });
+    });
+
+    document.querySelectorAll(".catalog-filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".catalog-filter-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.catalogFilter = btn.dataset.filter;
+        renderSongList();
+      });
+    });
+
+    // Initial render
+    renderSongList();
+  </script>
+</body>
+</html>
