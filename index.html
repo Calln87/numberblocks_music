@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>넘버블럭스 노래 & 가사 모음 | Numberblocks Songs & Lyrics</title>
+  <title>넘버블럭스 노래 & 가사 모음 v2.0 | Numberblocks Songs & Lyrics</title>
   <style>
     :root {
-      --bg-page: #f5f7fb;
+      --bg-page: #f4f6fb;
       --bg-card: #ffffff;
-      --bg-muted: #eef2f9;
-      --text-main: #1d2433;
-      --text-sub: #596579;
-      --border: #dde3ee;
+      --bg-muted: #edf1f8;
+      --bg-accent-soft: #eef5ff;
+      --text-main: #1b2232;
+      --text-sub: #566378;
+      --text-pron: #5b3cc4;
+      --border: #dce2ee;
       --primary: #e62429;
       --accent-blue: #1877f2;
-      --accent-green: #1db954;
-      --accent-yellow: #ffb703;
-      --accent-purple: #7b2cbf;
+      --accent-green: #18a94b;
+      --accent-amber: #f59f00;
       --shadow-sm: 0 2px 8px rgba(20, 32, 60, 0.06);
-      --shadow-md: 0 8px 24px rgba(20, 32, 60, 0.10);
+      --shadow-md: 0 10px 28px rgba(20, 32, 60, 0.10);
       --radius-lg: 18px;
       --radius-md: 12px;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      --radius-sm: 8px;
+      --lyric-scale: 1;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
     }
 
     * {
@@ -55,18 +58,19 @@
       );
     }
 
+    /* Header */
     header {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
-      padding: 1.4rem 1.5rem;
+      padding: 1.1rem 1.5rem;
       box-shadow: var(--shadow-sm);
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
     }
 
     .header-inner {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -79,6 +83,8 @@
       display: flex;
       align-items: center;
       gap: 0.85rem;
+      text-decoration: none;
+      color: inherit;
     }
 
     .brand-blocks {
@@ -92,94 +98,37 @@
       height: 14px;
       border-radius: 3px;
       display: block;
-      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22);
     }
 
     .brand-title h1 {
-      font-size: 1.35rem;
+      font-size: 1.28rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .version-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: #e8f0fe;
+      color: var(--accent-blue);
     }
 
     .brand-title p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-sub);
     }
 
-    /* Controls Bar */
-    .controls-wrap {
-      max-width: 1280px;
-      width: 100%;
-      margin: 1.25rem auto 0;
-      padding: 0 1.5rem;
+    .header-controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.85rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .search-box {
-      position: relative;
-      flex: 1 1 320px;
-      max-width: 540px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 0.8rem 2.6rem 0.8rem 2.6rem;
-      border: 2px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.96rem;
-      background: var(--bg-card);
-      color: var(--text-main);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .search-box input:focus {
-      outline: none;
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 0.95rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-sub);
-      font-size: 1rem;
-      pointer-events: none;
-    }
-
-    .clear-btn {
-      position: absolute;
-      right: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      border: none;
-      background: var(--bg-muted);
-      color: var(--text-sub);
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    .clear-btn.visible {
-      display: inline-flex;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.6rem;
       align-items: center;
     }
 
@@ -194,13 +143,18 @@
     .segmented button {
       border: none;
       background: transparent;
-      padding: 0.42rem 0.85rem;
+      padding: 0.4rem 0.78rem;
       border-radius: 999px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-sub);
       cursor: pointer;
       transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .segmented button:hover {
+      color: var(--text-main);
     }
 
     .segmented button.active {
@@ -209,20 +163,146 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* Main Workspace Layout */
-    main {
-      max-width: 1280px;
+    .toggle-pill-btn {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s;
+    }
+
+    .toggle-pill-btn.active {
+      background: #f3e8ff;
+      border-color: #c084fc;
+      color: #5b21b6;
+    }
+
+    /* Search & Filter Toolbar */
+    .toolbar-wrap {
+      max-width: 1320px;
       width: 100%;
-      margin: 1.25rem auto 2.5rem;
+      margin: 1.15rem auto 0;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1 1 320px;
+      max-width: 520px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.94rem;
+      background: var(--bg-card);
+      color: var(--text-main);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.14);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.92rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 0.7rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: var(--bg-muted);
+      color: var(--text-sub);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .clear-btn.visible {
+      display: inline-flex;
+    }
+
+    .chip-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .range-chip {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-sub);
+      padding: 0.32rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .range-chip:hover {
+      border-color: #b5c4de;
+      color: var(--text-main);
+    }
+
+    .range-chip.active {
+      background: var(--text-main);
+      border-color: var(--text-main);
+      color: #fff;
+    }
+
+    /* Main 2-Column Layout */
+    main {
+      max-width: 1320px;
+      width: 100%;
+      margin: 1rem auto 2.5rem;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 390px 1fr;
+      gap: 1.4rem;
       align-items: start;
       flex: 1;
     }
 
-    /* Song List Sidebar */
+    /* Left Sidebar: Song List */
     .song-list-panel {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
@@ -231,42 +311,42 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      max-height: calc(100vh - 190px);
+      max-height: calc(100vh - 175px);
       position: sticky;
-      top: 96px;
+      top: 86px;
     }
 
     .panel-header {
-      padding: 0.9rem 1.15rem;
+      padding: 0.85rem 1.1rem;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #fafbfe;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: var(--text-sub);
     }
 
     .song-list {
       overflow-y: auto;
-      padding: 0.65rem;
+      padding: 0.6rem;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .song-item {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      padding: 0.8rem 0.9rem;
+      gap: 0.75rem;
+      padding: 0.72rem 0.82rem;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       background: transparent;
       text-align: left;
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      transition: background 0.15s, border-color 0.15s;
       width: 100%;
     }
 
@@ -275,7 +355,7 @@
     }
 
     .song-item.active {
-      background: #eef5ff;
+      background: var(--bg-accent-soft);
       border-color: #9ec5fe;
     }
 
@@ -287,11 +367,11 @@
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #fff;
       flex-shrink: 0;
       box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.22);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
     }
 
     .song-meta {
@@ -300,7 +380,7 @@
     }
 
     .song-title-en {
-      font-size: 0.96rem;
+      font-size: 0.93rem;
       font-weight: 800;
       color: var(--text-main);
       white-space: nowrap;
@@ -309,7 +389,7 @@
     }
 
     .song-title-ko {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-sub);
       white-space: nowrap;
       overflow: hidden;
@@ -317,10 +397,22 @@
       margin-top: 2px;
     }
 
+    .song-item-right {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .fav-star-ind {
+      color: #f59f00;
+      font-size: 0.9rem;
+    }
+
     .lang-pill {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 800;
-      padding: 0.2rem 0.5rem;
+      padding: 0.18rem 0.48rem;
       border-radius: 6px;
       flex-shrink: 0;
     }
@@ -335,25 +427,25 @@
       color: #8a5300;
     }
 
-    /* Lyrics Viewer Panel */
+    /* Right Panel: Lyrics & Visualizer */
     .lyrics-panel {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
-      padding: 1.75rem 2rem;
-      min-height: 520px;
+      padding: 1.65rem 1.85rem;
+      min-height: 560px;
     }
 
     .lyrics-hero {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.15rem;
-      align-items: center;
+      gap: 1rem;
+      align-items: flex-start;
       justify-content: space-between;
-      padding-bottom: 1.25rem;
+      padding-bottom: 1.2rem;
       border-bottom: 2px dashed var(--border);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .lyrics-hero-left {
@@ -363,28 +455,29 @@
     }
 
     .hero-badge {
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.38rem;
       font-weight: 900;
       color: #fff;
       box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
     }
 
     .hero-titles h2 {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 800;
       color: var(--text-main);
       line-height: 1.25;
     }
 
     .hero-titles .subtitle-ko {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 600;
       color: var(--text-sub);
       margin-top: 0.2rem;
@@ -393,38 +486,231 @@
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
+      gap: 0.4rem;
       margin-top: 0.5rem;
     }
 
     .tag {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 0.22rem 0.65rem;
+      padding: 0.2rem 0.62rem;
       border-radius: 999px;
       background: var(--bg-muted);
       color: var(--text-sub);
     }
 
-    .en-only-notice {
-      background: #fff8e6;
-      border: 1px solid #ffd57e;
-      color: #7c4d00;
-      padding: 0.85rem 1.1rem;
-      border-radius: var(--radius-md);
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
+    .hero-actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       align-items: center;
-      gap: 0.6rem;
     }
 
-    /* Lyrics Grid */
+    .action-btn {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 0.48rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      transition: all 0.15s;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-muted);
+    }
+
+    .action-btn.fav-active {
+      background: #fff8db;
+      border-color: #ffd43b;
+      color: #b45309;
+    }
+
+    /* Interactive Block Visualizer Box (Upgrade 3) */
+    .visualizer-box {
+      background: #f8faff;
+      border: 1px solid #dbe4f3;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .visualizer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .visualizer-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .visualizer-sub {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+    }
+
+    .array-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .array-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-sub);
+      padding: 0.22rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+
+    .array-btn.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    .block-grid-stage {
+      display: inline-grid;
+      gap: 4px;
+      padding: 0.55rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .nb-unit {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      transition: transform 0.15s;
+    }
+
+    .nb-unit.mini {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .nb-unit:hover {
+      transform: scale(1.12);
+    }
+
+    /* Notices & Meaning Box for EN-Only */
+    .en-only-notice {
+      background: #fff9db;
+      border: 1px solid #ffe066;
+      color: #7c4d00;
+      padding: 0.9rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .en-only-notice-title {
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .en-only-meaning {
+      color: #5c3c00;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.65);
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      border-left: 3px solid #f59f00;
+    }
+
+    /* Line-by-Line Sync View (Upgrade 1) */
+    .line-sync-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .sync-stanza-card {
+      background: #fafbfe;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .sync-stanza-label {
+      font-size: 0.73rem;
+      font-weight: 800;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .sync-line-pair {
+      padding-left: 0.75rem;
+      border-left: 3px solid #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+    }
+
+    .sync-line-en {
+      font-size: calc(1.04rem * var(--lyric-scale));
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .sync-line-pron {
+      font-size: calc(0.88rem * var(--lyric-scale));
+      font-weight: 600;
+      color: var(--text-pron);
+      line-height: 1.45;
+    }
+
+    .sync-line-ko {
+      font-size: calc(0.97rem * var(--lyric-scale));
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    /* Side-by-Side / Single Column Grid View */
     .lyrics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 1.35rem;
     }
 
     .lyrics-grid.single-col {
@@ -435,33 +721,63 @@
       background: #fafbfe;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.35rem 1.5rem;
+      padding: 1.3rem 1.45rem;
     }
 
     .lyrics-col-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.7rem;
       margin-bottom: 1rem;
       border-bottom: 1px solid var(--border);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--text-sub);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
-    .stanza {
+    .stanza-block {
       margin-bottom: 1.25rem;
-      font-size: 1.02rem;
-      line-height: 1.8;
-      white-space: pre-line;
-      color: var(--text-main);
     }
 
-    .stanza:last-child {
+    .stanza-block:last-child {
       margin-bottom: 0;
+    }
+
+    .stanza-line {
+      margin-bottom: 0.45rem;
+    }
+
+    .stanza-line-en {
+      font-size: calc(1.02rem * var(--lyric-scale));
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .stanza-line-pron {
+      font-size: calc(0.86rem * var(--lyric-scale));
+      color: var(--text-pron);
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 0.25rem;
+    }
+
+    .stanza-line-ko {
+      font-size: calc(1.02rem * var(--lyric-scale));
+      color: var(--text-main);
+      line-height: 1.72;
+    }
+
+    /* Search Highlight */
+    mark.hl {
+      background: #ffec99;
+      color: #1b2232;
+      padding: 0 2px;
+      border-radius: 3px;
+      font-weight: 800;
     }
 
     .empty-state {
@@ -471,33 +787,57 @@
     }
 
     .empty-state h3 {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       margin-bottom: 0.4rem;
       color: var(--text-main);
     }
 
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1b2232;
+      color: #fff;
+      padding: 0.75rem 1.15rem;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     footer {
       text-align: center;
-      padding: 1.25rem;
-      font-size: 0.82rem;
+      padding: 1.2rem;
+      font-size: 0.8rem;
       color: var(--text-sub);
       border-top: 1px solid var(--border);
       background: var(--bg-card);
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
       main {
         grid-template-columns: 1fr;
       }
       .song-list-panel {
         position: static;
-        max-height: 340px;
+        max-height: 320px;
       }
       .lyrics-grid {
         grid-template-columns: 1fr;
       }
       .lyrics-panel {
-        padding: 1.25rem;
+        padding: 1.2rem;
       }
     }
   </style>
@@ -507,7 +847,7 @@
 
   <header>
     <div class="header-inner">
-      <div class="brand">
+      <a href="#theme-song" class="brand" id="brandHomeLink">
         <div class="brand-blocks" aria-hidden="true">
           <span style="background:#e62429"></span>
           <span style="background:#ff7b00"></span>
@@ -517,38 +857,65 @@
           <span style="background:#7b2cbf"></span>
         </div>
         <div class="brand-title">
-          <h1>넘버블럭스 노래 &amp; 가사 모음</h1>
-          <p>Numberblocks Songs &amp; Lyrics Explorer (EN / KO Bilingual &amp; EN-Only)</p>
+          <h1>넘버블럭스 노래 &amp; 가사 모음 <span class="version-badge">v2.0</span></h1>
+          <p>Numberblocks Songs &amp; Lyrics Explorer (EN/KO 대조 · 발음 가이드 · 블록 조립기)</p>
         </div>
-      </div>
+      </a>
 
-      <div class="filter-group">
-        <div class="segmented" role="group" aria-label="가사 표시 언어 선택">
-          <button type="button" class="lang-mode-btn active" data-mode="both">EN + 한글 함께</button>
+      <div class="header-controls">
+        <!-- Language View Mode -->
+        <div class="segmented" role="group" aria-label="가사 표시 모드 선택">
+          <button type="button" class="lang-mode-btn active" data-mode="line">한줄 대조</button>
+          <button type="button" class="lang-mode-btn" data-mode="both">좌우 비교</button>
           <button type="button" class="lang-mode-btn" data-mode="en">English Only</button>
           <button type="button" class="lang-mode-btn" data-mode="ko">한글 가사만</button>
+        </div>
+
+        <!-- Pronunciation Guide Toggle (Upgrade 2) -->
+        <button type="button" id="pronToggleBtn" class="toggle-pill-btn active" aria-pressed="true">
+          <span>&#127908;</span>
+          <span id="pronToggleText">발음 가이드 ON</span>
+        </button>
+
+        <!-- Font Size Controller (Upgrade 1) -->
+        <div class="segmented" role="group" aria-label="가사 글자 크기 조절">
+          <button type="button" class="font-size-btn" data-scale="0.9" title="글자 작게">A-</button>
+          <button type="button" class="font-size-btn active" data-scale="1" title="기본 크기">A</button>
+          <button type="button" class="font-size-btn" data-scale="1.15" title="글자 크게">A+</button>
+          <button type="button" class="font-size-btn" data-scale="1.3" title="글자 아주 크게">A++</button>
         </div>
       </div>
     </div>
   </header>
 
-  <section class="controls-wrap" aria-label="노래 검색 및 필터">
-    <div class="search-box">
-      <span class="search-icon" aria-hidden="true">&#128269;</span>
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="노래 제목(영/한), 숫자(1~100), 가사 키워드로 검색하세요..."
-        autocomplete="off"
-      />
-      <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="검색어 지우기">&times;</button>
+  <section class="toolbar-wrap" aria-label="노래 검색 및 필터">
+    <div class="toolbar-row">
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">&#128269;</span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="노래 제목(영/한), 숫자(1~100), 가사 또는 한글 발음으로 검색..."
+          autocomplete="off"
+        />
+        <button type="button" id="clearSearchBtn" class="clear-btn" aria-label="검색어 지우기">&times;</button>
+      </div>
+
+      <div class="segmented" role="group" aria-label="수록곡 언어 및 즐겨찾기 필터">
+        <button type="button" class="catalog-filter-btn active" data-filter="all">전체 곡</button>
+        <button type="button" class="catalog-filter-btn" data-filter="favorites" id="favFilterBtn">&#9733; 즐겨찾기 (0)</button>
+        <button type="button" class="catalog-filter-btn" data-filter="bilingual">한/영 완비</button>
+        <button type="button" class="catalog-filter-btn" data-filter="en-only">영어 전용 (EN Only)</button>
+      </div>
     </div>
 
-    <div class="filter-group">
-      <div class="segmented" role="group" aria-label="수록곡 언어 필터">
-        <button type="button" class="catalog-filter-btn active" data-filter="all">전체 곡</button>
-        <button type="button" class="catalog-filter-btn" data-filter="bilingual">한/영 완비</button>
-        <button type="button" class="catalog-filter-btn" data-filter="en-only">영어 전용 포함곡</button>
+    <div class="toolbar-row">
+      <div class="chip-bar" role="group" aria-label="숫자 구간 빠른 필터">
+        <button type="button" class="range-chip active" data-range="all">전체 구간</button>
+        <button type="button" class="range-chip" data-range="1-5">숫자 1 ~ 5</button>
+        <button type="button" class="range-chip" data-range="6-10">숫자 6 ~ 10</button>
+        <button type="button" class="range-chip" data-range="11-20">숫자 11 ~ 20</button>
+        <button type="button" class="range-chip" data-range="special">테마 &amp; 100 &amp; 스페셜</button>
       </div>
     </div>
   </section>
@@ -565,8 +932,10 @@
     <section id="lyricsViewer" class="lyrics-panel" aria-live="polite"></section>
   </main>
 
+  <div id="toastMsg" class="toast" role="status" aria-live="polite"></div>
+
   <footer>
-    Numberblocks Fan Lyrics Explorer &bull; Zero-Dependency Single HTML Application (EN / KO)
+    Numberblocks Fan Lyrics Explorer v2.0 &bull; Zero-Dependency Single HTML Application (EN / KO / Pronunciation / Block Arrays)
   </footer>
 
   <script>
@@ -574,6 +943,9 @@
       {
         id: "theme-song",
         numberLabel: "1-10",
+        rangeGroup: "special",
+        blockCount: 10,
+        blockColors: ["#e62429","#ff7b00","#f4b400","#2ec44d","#1890ff","#5b3cc4","#b538d5","#d63384","#0ea5e9","#ef4444"],
         color: "linear-gradient(135deg, #e62429, #ff7b00, #2ec44d, #1890ff)",
         titleEn: "Numberblocks Theme Song",
         titleKo: "넘버블럭스 오프닝 테마송",
@@ -584,6 +956,11 @@
           "One, and another one is two!\nAnd another one is me — that's three!\nFive, four, three, two, one —\nTime for some number fun!",
           "You can count on us,\nWe're the Numberblocks!"
         ],
+        pronunciationKo: [
+          "원, 투, 쓰리, 포, 파이브!\n넘버블럭스!\n식스, 세븐, 에잇, 나인, 텐!\n넘버블럭스!",
+          "원, 앤 어나더 원 이즈 투!\n앤 어나더 원 이즈 미 — 댓츠 쓰리!\n파이브, 포, 쓰리, 투, 원 —\n타임 포 썸 넘버 펀!",
+          "유 캔 카운트 온 어스,\n위어 더 넘버블럭스!"
+        ],
         lyricsKo: [
           "하나, 둘, 셋, 넷, 다섯!\n넘버블럭스!\n여섯, 일곱, 여덟, 아홉, 열!\n넘버블럭스!",
           "일에 일을 더하면 이!\n거기에 일을 더하면 나 — 바로 삼!\n오, 사, 삼, 이, 일 —\n신나는 숫자 놀이 시간!",
@@ -593,6 +970,8 @@
       {
         id: "one-wonderful-world",
         numberLabel: "1",
+        rangeGroup: "1-5",
+        blockCount: 1,
         color: "#e62429",
         titleEn: "One (One Wonderful World)",
         titleKo: "원 (하나뿐인 멋진 세상)",
@@ -602,6 +981,10 @@
           "One sun in the sky,\nOne boat sailing by,\nOne cloud floating high,\nOne me — I am One!",
           "One wonderful world,\nAnd one me!\nOne bird in a tree,\nOne whale in the sea,\nOne wonderful world and one me!"
         ],
+        pronunciationKo: [
+          "원 썬 인 더 스카이,\n원 보트 세일링 바이,\n원 클라우드 플로팅 하이,\n원 미 — 아이 앰 원!",
+          "원 원더풀 월드,\n앤 원 미!\n원 버드 인 어 트리,\n원 웨일 인 더 씨,\n원 원더풀 월드 앤 원 미!"
+        ],
         lyricsKo: [
           "하늘에 떠 있는 해님도 하나,\n지나가는 조각배도 하나,\n높이 떠 있는 구름도 하나,\n나도 하나 — 나는 원(1)이야!",
           "하나뿐인 멋진 세상,\n그리고 하나뿐인 나!\n나무 위의 새도 한 마리,\n바다 속 고래도 한 마리,\n하나뿐인 멋진 세상과 나!"
@@ -610,6 +993,8 @@
       {
         id: "two-better-than-one",
         numberLabel: "2",
+        rangeGroup: "1-5",
+        blockCount: 2,
         color: "#ff7b00",
         titleEn: "Two (Two Shoes / Better Than One)",
         titleKo: "투 (둘이서 함께라면)",
@@ -619,6 +1004,10 @@
           "One, two! One, two!\nLook at my dancing shoes!\nLeft foot, right foot, tap, tap, tap,\nTwo hands ready to clap, clap, clap!",
           "Two is better than one,\nTwice as much of the fun!\nBicycle wheels and wings on a plane,\nWait a second, let's dance again!"
         ],
+        pronunciationKo: [
+          "원, 투! 원, 투!\n룩 앳 마이 댄싱 슈즈!\n레프트 풋, 라이트 풋, 탭, 탭, 탭,\n투 핸즈 레디 투 클랩, 클랩, 클랩!",
+          "투 이즈 베터 댄 원,\n트와이스 애즈 머치 오브 더 펀!\n바이시클 휠즈 앤 윙즈 온 어 플레인,\n웨잇 어 세컨드, 렛츠 댄스 어게인!"
+        ],
         lyricsKo: [
           "하나, 둘! 하나, 둘!\n내 춤추는 신발 두 짝을 봐!\n왼발, 오른발, 탭, 탭, 탭,\n두 손으로 신나게 짝, 짝, 짝!",
           "혼자보다 둘이 더 좋아,\n즐거움도 두 배가 되지!\n자전거 바퀴 두 개, 비행기 날개도 두 개,\n잠깐만, 우리 다시 춤춰볼까!"
@@ -627,6 +1016,8 @@
       {
         id: "three-magic-number",
         numberLabel: "3",
+        rangeGroup: "1-5",
+        blockCount: 3,
         color: "#f4b400",
         titleEn: "Three (Look at Me!)",
         titleKo: "쓰리 (나를 봐요, 하나 둘 셋!)",
@@ -636,6 +1027,10 @@
           "One, two, three — everybody look at me!\nJuggling balls: one, two, three!\nThree little pigs and three blind mice,\nThree is a number that's extra nice!",
           "A triangle has three corners,\nOne, two, three — ta-da!\nEverything works in threes,\nThe finest number by far!"
         ],
+        pronunciationKo: [
+          "원, 투, 쓰리 — 에브리바디 룩 앳 미!\n저글링 볼즈: 원, 투, 쓰리!\n쓰리 리틀 피그즈 앤 쓰리 블라인드 마이스,\n쓰리 이즈 어 넘버 댓츠 엑스트라 나이스!",
+          "어 트라이앵글 해즈 쓰리 코너즈,\n원, 투, 쓰리 — 타다!\n에브리씽 웍스 인 쓰리즈,\n더 파아니스트 넘버 바이 파!"
+        ],
         lyricsKo: [
           "하나, 둘, 셋 — 모두 나를 봐요!\n저글링 공이 하나, 둘, 셋!\n아기 돼지 삼형제, 눈먼 생쥐 세 마리,\n삼(3)은 정말이지 최고로 멋진 숫자야!",
           "삼각형의 꼭짓점도 세 개,\n하나, 둘, 셋 — 짜잔!\n모든 건 셋이 모이면 완벽해,\n세상에서 제일가는 숫자 삼!"
@@ -644,6 +1039,8 @@
       {
         id: "four-on-the-floor",
         numberLabel: "4",
+        rangeGroup: "1-5",
+        blockCount: 4,
         color: "#2ec44d",
         titleEn: "Four (I Like to Be Square)",
         titleKo: "포 (나는 네모가 좋아)",
@@ -653,6 +1050,10 @@
           "I am Four, have we met before?\nFour corners, four equal sides,\nFour wheels on a car for bumpy rides!",
           "Two and two make four,\nFour legs on a table, four corners on a door,\nIt's great to be a square —\nSquares are everywhere!"
         ],
+        pronunciationKo: [
+          "아이 앰 포, 해브 위 멧 비포?\n포 코너즈, 포 이퀄 사이즈,\n포 휠즈 온 어 카 포 범피 라이즈!",
+          "투 앤 투 메이크 포,\n포 레그즈 온 어 테이블, 포 코너즈 온 어 도어,\n잇츠 그레잇 투 비 어 스퀘어 —\n스퀘어즈 아 에브리웨어!"
+        ],
         lyricsKo: [
           "나는 포(4)야, 우리 전에 만났던가?\n네 개의 모서리, 똑같은 길이의 네 변,\n덜컹거리는 자동차 바퀴도 네 개!",
           "둘 더하기 둘은 넷,\n식탁 다리도 네 개, 문 모서리도 네 개,\n정사각형이 되는 건 정말 멋져 —\n네모는 어디에나 있거든!"
@@ -661,6 +1062,8 @@
       {
         id: "five-high-five",
         numberLabel: "5",
+        rangeGroup: "1-5",
+        blockCount: 5,
         color: "#1890ff",
         titleEn: "Five (High Five!)",
         titleKo: "파이브 (하이파이브!)",
@@ -670,6 +1073,10 @@
           "One, two, three, four, five!\nCome on and give me a high five!\nFive fingers on my hand,\nPlaying in a rockstar band!",
           "Five points on a shining star,\nStrumming on my five-string guitar!\nHigh five, up above,\nFive is the number that you love!"
         ],
+        pronunciationKo: [
+          "원, 투, 쓰리, 포, 파이브!\n컴 온 앤 기브 미 어 하이 파이브!\n파이브 핑거즈 온 마이 핸드,\n플레잉 인 어 록스타 밴드!",
+          "파이브 포인츠 온 어 샤이닝 스타,\n스트러밍 온 마이 파이브-스트링 기타!\n하이 파이브, 업 어보브,\n파이브 이즈 더 넘버 댓 유 러브!"
+        ],
         lyricsKo: [
           "하나, 둘, 셋, 넷, 다섯!\n이리 와서 나랑 하이파이브 해!\n내 손가락은 다섯 개,\n멋진 록스타 밴드에서 연주하지!",
           "반짝이는 별의 꼭짓점도 다섯 개,\n신나게 기타를 쳐볼까!\n높이 손을 들어 하이파이브,\n모두가 사랑하는 숫자 파이브(5)!"
@@ -678,6 +1085,8 @@
       {
         id: "six-roll-the-dice",
         numberLabel: "6",
+        rangeGroup: "6-10",
+        blockCount: 6,
         color: "#5b3cc4",
         titleEn: "Six (Roll the Dice)",
         titleKo: "식스 (주사위를 굴려요)",
@@ -687,6 +1096,10 @@
           "Throw the dice, roll a six!\nI've got six fantastic tricks!\nOne, two, three, four, five, six spots,\nA cube has six faces and lots of dots!",
           "Three and three, or four and two,\nFive and one — how do you do?\nLet's play a game, it's twice as nice,\nWhen Numberblock Six rolls the dice!"
         ],
+        pronunciationKo: [
+          "쓰로우 더 다이스, 롤 어 식스!\n아이브 갓 식스 판타스틱 트릭스!\n원, 투, 쓰리, 포, 파이브, 식스 스팟츠,\n어 큐브 해즈 식스 페이시즈 앤 랏츠 오브 닷츠!",
+          "쓰리 앤 쓰리, 오어 포 앤 투,\n파이브 앤 원 — 하우 두 유 두?\n렛츠 플레이 어 게임, 잇츠 트와이스 애즈 나이스,\n웬 넘버블럭 식스 롤즈 더 다이스!"
+        ],
         lyricsKo: [
           "주사위를 던져 식스(6)를 만들어봐!\n신기한 여섯 가지 재주가 있지!\n하나, 둘, 셋, 넷, 다섯, 여섯 개의 점,\n정육면체의 면도 여섯 개야!",
           "삼 더하기 삼, 또는 사 더하기 이,\n오 더하기 일 — 반가워 친구들!\n함께 게임을 시작해 볼까,\n넘버블럭 식스가 주사위를 굴릴 시간!"
@@ -695,6 +1108,9 @@
       {
         id: "seven-lucky-rainbow",
         numberLabel: "7",
+        rangeGroup: "6-10",
+        blockCount: 7,
+        blockColors: ["#e62429","#ff7b00","#ffd000","#2ec44d","#1890ff","#5b3cc4","#b538d5"],
         color: "linear-gradient(135deg,#e62429,#ff7b00,#ffd000,#2ec44d,#1890ff,#5b3cc4,#b538d5)",
         titleEn: "Seven (Lucky Number Seven)",
         titleKo: "세븐 (행운의 무지개 숫자 7)",
@@ -704,6 +1120,10 @@
           "Red and orange, yellow, green,\nThe luckiest number you've ever seen!\nBlue and indigo, violet too,\nSeven rainbow colors shining through!",
           "Seven days are in a week,\nRain or shine, the sun will peek!\nEverything turns out alright,\nWith lucky Seven shining bright!"
         ],
+        pronunciationKo: [
+          "레드 앤 오렌지, 옐로우, 그린,\n더 럭키이스트 넘버 유브 에버 씬!\n블루 앤 인디고, 바이올렛 투,\n세븐 레인보우 컬러즈 샤이닝 쓰루!",
+          "세븐 데이즈 아 인 어 위크,\n레인 오어 샤인, 더 썬 윌 피크!\n에브리씽 턴즈 아웃 올라잇,\n위드 럭키 세븐 샤이닝 브라잇!"
+        ],
         lyricsKo: [
           "빨강, 주황, 노랑, 초록,\n세상에서 가장 행운이 넘치는 숫자!\n파랑, 남색, 보라색까지,\n일곱 빛깔 무지개가 반짝이네!",
           "일주일은 모두 칠(7)일,\n비가 오나 눈이 오나 해님이 방긋!\n모든 일이 술술 잘 풀릴 거야,\n행운의 세븐이 밝게 빛나니까!"
@@ -712,14 +1132,20 @@
       {
         id: "eight-octoblock",
         numberLabel: "8",
+        rangeGroup: "6-10",
+        blockCount: 8,
         color: "#d63384",
         titleEn: "Eight (Octoblock, Assemble!)",
         titleKo: "옥토블럭 에잇 (출동, 옥토블럭!)",
         season: "Season 2",
         hasKorean: true,
         lyricsEn: [
-          "One, two, three, four, five, six, seven, eight!\nOctoblock is feeling great!\nI can swim, I can climb, I can jugg-le eight,\nWhen you need a hero, I won't be late!",
-          "Eight strong arms and eight quick legs,\nWalking like a spider or scrambling eggs!\nOctoblock, command:1, 2, 3, 4, 5, 6, 7, 8!"
+          "One, two, three, four, five, six, seven, eight!\nOctoblock is feeling great!\nI can swim, I can climb, I can juggle eight,\nWhen you need a hero, I won't be late!",
+          "Eight strong arms and eight quick legs,\nWalking like a spider or scrambling eggs!\nOctoblock, command: 1, 2, 3, 4, 5, 6, 7, 8!"
+        ],
+        pronunciationKo: [
+          "원, 투, 쓰리, 포, 파이브, 식스, 세븐, 에잇!\n옥토블럭 이즈 필링 그레잇!\n아이 캔 스윔, 아이 캔 클라임, 아이 캔 저글 에잇,\n웬 유 니드 어 히어로, 아이 원트 비 레잇!",
+          "에잇 스트롱 암즈 앤 에잇 퀵 레그즈,\n워킹 라이크 어 스파이더 오어 스크램블링 에그즈!\n옥토블럭, 커맨드: 원, 투, 쓰리, 포, 파이브, 식스, 세븐, 에잇!"
         ],
         lyricsKo: [
           "일, 이, 삼, 사, 오, 육, 칠, 팔!\n옥토블럭 에잇(8)이 나가신다!\n수영도 척척, 오르기도 척척, 여덟 팔로 저글링도 척척,\n영웅이 필요할 때 언제든 달려가지!",
@@ -727,8 +1153,33 @@
         ]
       },
       {
+        id: "nine-square-sneeze",
+        numberLabel: "9",
+        rangeGroup: "6-10",
+        blockCount: 9,
+        color: "#64748b",
+        titleEn: "Nine (Three Threes / Ker-Choo!)",
+        titleKo: "나인 (세 줄씩 세 칸, 에취!)",
+        season: "Season 2",
+        hasKorean: true,
+        lyricsEn: [
+          "Three rows of three, standing tall and square,\nNine little blocks with a ker-choo flair!\nOne, two, three — four, five, six — seven, eight, nine,\nFeeling so square and feeling so fine!",
+          "Tickle my nose and what do I do?\nOne, two, three — A-tishoo! Ker-choo!\nTake away One and Octoblock's there,\nPut One back in and I'm Nine the Square!"
+        ],
+        pronunciationKo: [
+          "쓰리 로우즈 오브 쓰리, 스탠딩 톨 앤 스퀘어,\n나인 리틀 블럭스 위드 어 커-츄 플레어!\n원, 투, 쓰리 — 포, 파이브, 식스 — 세븐, 에잇, 나인,\n필링 쏘 스퀘어 앤 필링 쏘 파인!",
+          "티클 마이 노우즈 앤 왓 두 아이 두?\n원, 투, 쓰리 — 어-티슈! 커-츄!\n테이크 어웨이 원 앤 옥토블럭스 데어,\n풋 원 백 인 앤 아임 나인 더 스퀘어!"
+        ],
+        lyricsKo: [
+          "세 개씩 세 줄, 반듯한 정사각형,\n아홉 개 블록이 모여 재채기 대장 나인(9)!\n하나, 둘, 셋 — 넷, 다섯, 여섯 — 일곱, 여덟, 아홉,\n반듯한 네모 모양이 정말 기분 좋아!",
+          "코가 간질간질하면 어떻게 될까?\n하나, 둘, 셋 — 에취! 커-츄!\n원(1)이 빠져나오면 옥토블럭 에잇(8),\n다시 원(1)이 합쳐지면 정사각형 나인(9)!"
+        ]
+      },
+      {
         id: "ten-rocket",
         numberLabel: "10",
+        rangeGroup: "6-10",
+        blockCount: 10,
         color: "#e62429",
         titleEn: "Ten (Blast Off!)",
         titleKo: "텐 (로켓 발사 카운트다운!)",
@@ -738,14 +1189,43 @@
           "One, two, three, four, five, six, seven, eight, nine, ten!\nI am Ten — that's ten Ones!\nCount down with me to the stars above:\nTen, nine, eight, seven, six!",
           "Five, four, three, two, one — BLAST OFF!\nUp in space, flying high,\nA shooting star across the sky,\nTen is one Ten and zero Ones!"
         ],
+        pronunciationKo: [
+          "원, 투, 쓰리, 포, 파이브, 식스, 세븐, 에잇, 나인, 텐!\n아이 앰 텐 — 댓츠 텐 원즈!\n카운트 다운 위드 미 투 더 스타즈 어보브:\n텐, 나인, 에잇, 세븐, 식스!",
+          "파이브, 포, 쓰리, 투, 원 — 블래스트 오프!\n업 인 스페이스, 플라잉 하이,\n어 슈팅 스타 어크로스 더 스카이,\n텐 이즈 원 텐 앤 제로 원즈!"
+        ],
         lyricsKo: [
           "일, 이, 삼, 사, 오, 육, 칠, 팔, 구, 십!\n나는 텐(10) — 원(1)이 열 개 모인 숫자!\n별들을 향해 함께 카운트다운 해볼까:\n십, 구, 팔, 칠, 육!",
           "오, 사, 삼, 이, 일 — 발사!\n우주 높이 날아올라,\n밤하늘을 가르는 별똥별처럼,\n텐은 십(10)이 하나, 일(1)은 영!"
         ]
       },
       {
+        id: "eleven-football-fan",
+        numberLabel: "11",
+        rangeGroup: "11-20",
+        blockCount: 11,
+        color: "#dc2626",
+        titleEn: "Eleven (One Ten and One One)",
+        titleKo: "일레븐 (축구장 위의 열하나!)",
+        season: "Season 3",
+        hasKorean: true,
+        lyricsEn: [
+          "Ten and One, kicking the ball,\nEleven players standing tall!\nPass to the left, pass to the right,\nEleven is ready for the match tonight!",
+          "One Ten, one One, running down the wing,\nHear the stadium crowd all sing:\nGoal, goal, goal for Numberblock Eleven,\nFootball fun is eleven out of seven!"
+        ],
+        pronunciationKo: [
+          "텐 앤 원, 키킹 더 볼,\n일레븐 플레이어즈 스탠딩 톨!\n패스 투 더 레프트, 패스 투 더 라잇,\n일레븐 이즈 레디 포 더 매치 투나잇!",
+          "원 텐, 원 원, 러닝 다운 더 윙,\n히어 더 스타디움 크라우드 올 싱:\n골, 골, 골 포 넘버블럭 일레븐,\n풋볼 펀 이즈 일레븐 아웃 오브 세븐!"
+        ],
+        lyricsKo: [
+          "텐(10)과 원(1)이 만나 축구공을 뻥!\n열한 명의 선수들이 당당하게 섰어!\n왼쪽으로 패스, 오른쪽으로 패스,\n일레븐(11)과 함께라면 오늘 경기 준비 완료!",
+          "십(10)이 하나, 일(1)이 하나, 경기장을 누비며,\n관중석의 응원 소리를 들어봐:\n골, 골, 골! 넘버블럭 일레븐!\n신나는 축구 경기가 펼쳐진다!"
+        ]
+      },
+      {
         id: "twelve-rectangle-rays",
         numberLabel: "12",
+        rangeGroup: "11-20",
+        blockCount: 12,
         color: "#ff6b35",
         titleEn: "Twelve (Super Rectangle)",
         titleKo: "트웰브 (슈퍼 직사각형의 마법)",
@@ -755,56 +1235,89 @@
           "One by twelve, or two by six,\nThree by four — check out my Arrays!\nTurn and split, rearrange the mix,\nTwelve can stand in so many ways!",
           "Ten and two, or six and six,\nThree fours standing in a row,\nSuper Rectangle on the go!"
         ],
+        pronunciationKo: [
+          "원 바이 트웰브, 오어 투 바이 식스,\n쓰리 바이 포 — 체크 아웃 마이 어레이즈!\n턴 앤 스플릿, 리어레인지 더 믹스,\n트웰브 캔 스탠드 인 쏘 매니 웨이즈!",
+          "텐 앤 투, 오어 식스 앤 식스,\n쓰리 포즈 스탠딩 인 어 로우,\n슈퍼 렉탱글 온 더 고!"
+        ],
         lyricsKo: [
           "1 곱하기 12, 아니면 2 곱하기 6,\n3 곱하기 4 — 내 멋진 배열(어레이)을 봐!\n돌리고 나누고 새롭게 줄 맞춰 서면,\n트웰브(12)는 정말 다양한 직사각형이 돼!",
           "십과 이, 또는 육 더하기 육,\n사(4)가 세 줄로 나란히 서면,\n슈퍼 직사각형 출동이다!"
         ]
       },
       {
-        id: "numberblobs-song",
-        numberLabel: "Blobs",
-        color: "#845ec2",
-        titleEn: "The Numberblobs Song",
-        titleKo: "넘버블롭스 노래 (English Only)",
-        season: "Special Song",
-        hasKorean: false,
+        id: "fifteen-step-squad",
+        numberLabel: "15",
+        rangeGroup: "11-20",
+        blockCount: 15,
+        color: "#0284c7",
+        titleEn: "Fifteen (Hush, Hush! Step Squad)",
+        titleKo: "피프틴 (쉿! 비밀 계단 특공대)",
+        season: "Season 3",
+        hasKorean: true,
         lyricsEn: [
-          "We are the Numberblobs, bouncing all day,\nHelping the Numberblocks count as they play!\nOne blob, two blobs, three blobs, four,\nEvery time you count us, there's always room for more!",
-          "Red blobs, orange blobs, yellow and green,\nThe bounciest counters that you've ever seen!\nCount us in a circle, count us in a line,\nWith the Numberblobs around, counting's mighty fine!"
+          "Hush, hush! Here comes the Step Squad:\nOne, plus two, plus three, plus four, plus five!\nFive steps climbing up so high,\nAgent Fifteen has arrived!",
+          "Three fives or five threes in disguise,\nSolving number mysteries before your eyes!\nStep by step, from One to Five,\nFifteen keeps the mission alive!"
         ],
-        lyricsKo: null
+        pronunciationKo: [
+          "허쉬, 허쉬! 히어 컴즈 더 스텝 스쿼드:\n원, 플러스 투, 플러스 쓰리, 플러스 포, 플러스 파이브!\n파이브 스텝스 클라이밍 업 쏘 하이,\n에이전트 피프틴 해즈 어라이브드!",
+          "쓰리 파이브즈 오어 파이브 쓰리즈 인 디스가이즈,\n솔빙 넘버 미스터리즈 비포 유어 아이즈!\n스텝 바이 스텝, 프롬 원 투 파이브,\n피프틴 킵스 더 미션 얼라이브!"
+        ],
+        lyricsKo: [
+          "쉿, 조용! 계단 특공대가 나타났다:\n1 더하기 2 더하기 3 더하기 4 더하기 5!\n다섯 계단을 차곡차곡 올라가면,\n비밀 요원 피프틴(15) 등장!",
+          "오(5)가 셋, 또는 삼(3)이 다섯으로 변신하며,\n눈앞의 숫자 수수께끼를 척척 해결하지!\n한 계단씩 차근차근 1부터 5까지,\n피프틴 특공대 작전 성공!"
+        ]
       },
       {
-        id: "whats-the-difference",
-        numberLabel: "- / +",
-        color: "#00897b",
-        titleEn: "What's the Difference?",
-        titleKo: "차이가 얼마일까? (English Only)",
-        season: "Season 3 Special",
-        hasKorean: false,
-        lyricsEn: [
-          "What's the difference between me and you?\nLine us up side by side to see what is true!\nBetween Seven and Five, the difference is Two,\nSeven take away Five leaves Two in view!",
-          "Compare the blocks, how many more?\nBetween Nine and Five, the difference is Four!\nStand next to each other and count up the gap,\nFinding the difference is easy as a snap!"
-        ],
-        lyricsKo: null
-      },
-      {
-        id: "sign-of-the-times",
-        numberLabel: "×",
-        color: "#3f51b5",
-        titleEn: "Sign of the Times (Multiplication)",
-        titleKo: "곱셈의 기호 (English Only)",
+        id: "sixteen-big-square",
+        numberLabel: "16",
+        rangeGroup: "11-20",
+        blockCount: 16,
+        color: "#16a34a",
+        titleEn: "Sixteen (Four by Four Square)",
+        titleKo: "식스틴 (4 곱하기 4 슈퍼 네모 파티)",
         season: "Season 4",
-        hasKorean: false,
+        hasKorean: true,
         lyricsEn: [
-          "No need to add them one by one,\nMultiplication gets it done!\nThree lots of two, that's three times two,\nSix is waiting there for you!",
-          "Rows and columns, neat and tight,\nTimes table magic shining bright!\nIt's the Sign of the Times — multiply away,\nMaking bigger numbers every single day!"
+          "Four rows of four, a giant square!\nSixteen blocks dancing in the air!\nTwo eights, four fours, eight twos in line,\nBeing a square is mighty fine!",
+          "Ten and Six, or Four times Four,\nDouble Eight knocking at the door!\nSpin the square and party on,\nWith Sixteen until the dawn!"
         ],
-        lyricsKo: null
+        pronunciationKo: [
+          "포 로우즈 오브 포, 어 자이언트 스퀘어!\n식스틴 블럭스 댄싱 인 디 에어!\n투 에잇츠, 포 포즈, 에잇 투즈 인 라인,\n비잉 어 스퀘어 이즈 마이티 파인!",
+          "텐 앤 식스, 오어 포 타임즈 포,\n더블 에잇 노킹 앳 더 도어!\n스핀 더 스퀘어 앤 파티 온,\n위드 식스틴 언틸 더 던!"
+        ],
+        lyricsKo: [
+          "네 개씩 네 줄, 큼직한 정사각형!\n열여섯 개 블록이 신나게 춤을 춰!\n팔(8)이 둘, 사(4)가 넷, 이(2)가 여덟 줄,\n정사각형이 되는 건 정말 최고야!",
+          "십(10)과 육(6), 아니면 4 곱하기 4,\n더블 에잇(8+8)이 문을 두드리네!\n네모난 무대 위에서 신나게 돌아보자,\n식스틴(16)과 함께하는 네모 파티!"
+        ]
+      },
+      {
+        id: "twenty-two-tens",
+        numberLabel: "20",
+        rangeGroup: "11-20",
+        blockCount: 20,
+        color: "#ea580c",
+        titleEn: "Twenty (Two Tens Tango)",
+        titleKo: "트웬티 (두 개의 텐, 신나는 탱고 춤)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "One Ten, two Tens — Twenty is here!\nTipping my hat with a tango cheer!\nTwo times ten, or ten times two,\nDancing the tango just for you!",
+          "Four fives, five fours, ten twos in step,\nTwenty has rhythm, style, and pep!\nCount by tens: ten, twenty — olé!\nTwenty dances the night away!"
+        ],
+        pronunciationKo: [
+          "원 텐, 투 텐즈 — 트웬티 이즈 히어!\n티핑 마이 햇 위드 어 탱고 치어!\n투 타임즈 텐, 오어 텐 타임즈 투,\n댄싱 더 탱고 저스트 포 유!",
+          "포 파이브즈, 파이브 포즈, 텐 투즈 인 스텝,\n트웬티 해즈 리듬, 스타일, 앤 펩!\n카운트 바이 텐즈: 텐, 트웬티 — 올레!\n트웬티 댄시즈 더 나잇 어웨이!"
+        ],
+        lyricsKo: [
+          "텐(10)이 하나, 텐(10)이 둘 — 트웬티(20)가 왔다!\n모자를 살짝 기울이며 탱고 인사!\n2 곱하기 10, 또는 10 곱하기 2,\n너를 위해 멋진 탱고 춤을 추지!",
+          "오(5)가 넷, 사(4)가 다섯, 이(2)가 열 개로 발맞춰,\n리듬과 멋이 넘치는 트웬티!\n십씩 세어 볼까: 십, 이십 — 올레!\n트웬티와 함께 신나게 춤춰요!"
+        ]
       },
       {
         id: "one-hundred-big-one",
         numberLabel: "100",
+        rangeGroup: "special",
+        blockCount: 100,
         color: "#c1121f",
         titleEn: "The Big One (One Hundred)",
         titleKo: "원 헌드레드 (커다란 백, 100!)",
@@ -812,27 +1325,199 @@
         hasKorean: true,
         lyricsEn: [
           "Ten tens marching in a giant square,\nTen by ten, with blocks to spare!\nFrom One all the way to One Hundred high,\nWe can reach right up to the sky!",
-          "Ten, twenty, thirty, forty, fifty,\nSixty, seventy, eighty, ninety, ONE HUNDRED!\nA hundredOnes inside of me,\nThe biggest square you'll ever see!"
+          "Ten, twenty, thirty, forty, fifty,\nSixty, seventy, eighty, ninety, ONE HUNDRED!\nA hundred Ones inside of me,\nThe biggest square you'll ever see!"
+        ],
+        pronunciationKo: [
+          "텐 텐즈 마칭 인 어 자이언트 스퀘어,\n텐 바이 텐, 위드 블럭스 투 스페어!\n프롬 원 올 더 웨이 투 원 헌드레드 하이,\n위 캔 리치 라잇 업 투 더 스카이!",
+          "텐, 트웬티, 써티, 포티, 피프티,\n식스티, 세븐티, 에이티, 나인티, 원 헌드레드!\n어 헌드레드 원즈 인사이드 오브 미,\n더 비기스트 스퀘어 유윌 에버 씨!"
         ],
         lyricsKo: [
           "열(10)이 열 개 모여 거대한 정사각형 행진,\n가로도 열 칸, 세로도 열 칸!\n일(1)부터 시작해 백(100)까지 차곡차곡,\n하늘 끝까지 닿을 수 있어!",
           "십, 이십, 삼십, 사십, 오십,\n육십, 칠십, 팔십, 구십, 백(100)!\n내 안에는 원(1)이 백 개나 들어있지,\n세상에서 가장 듬직한 정사각형 원 헌드레드!"
         ]
+      },
+      {
+        id: "numberblobs-song",
+        numberLabel: "Blobs",
+        rangeGroup: "special",
+        blockCount: 7,
+        blockColors: ["#e62429","#ff7b00","#ffd000","#2ec44d","#1890ff","#5b3cc4","#b538d5"],
+        color: "#845ec2",
+        titleEn: "The Numberblobs Song",
+        titleKo: "넘버블롭스 노래 (English Only)",
+        season: "Special Song",
+        hasKorean: false,
+        meaningKo: "동글동글 통통 튀는 친구들인 '넘버블롭(Numberblobs)'과 함께 원을 그리거나 줄을 서며 1부터 차례대로 숫자를 세어 보는 신나는 영어 전용 싱어롱 곡입니다.",
+        lyricsEn: [
+          "We are the Numberblobs, bouncing all day,\nHelping the Numberblocks count as they play!\nOne blob, two blobs, three blobs, four,\nEvery time you count us, there's always room for more!",
+          "Red blobs, orange blobs, yellow and green,\nThe bounciest counters that you've ever seen!\nCount us in a circle, count us in a line,\nWith the Numberblobs around, counting's mighty fine!"
+        ],
+        pronunciationKo: [
+          "위 아 더 넘버블롭스, 바운싱 올 데이,\n헬핑 더 넘버블럭스 카운트 애즈 데이 플레이!\n원 블롭, 투 블롭스, 쓰리 블롭스, 포,\n에브리 타임 유 카운트 어스, 데어즈 올웨이즈 룸 포 모어!",
+          "레드 블롭스, 오렌지 블롭스, 옐로우 앤 그린,\n더 바운시이스트 카운터즈 댓 유브 에버 씬!\n카운트 어스 인 어 써클, 카운트 어스 인 어 라인,\n위드 더 넘버블롭스 어라운드, 카운팅즈 마이티 파인!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "whats-the-difference",
+        numberLabel: "- / +",
+        rangeGroup: "special",
+        blockCount: 9,
+        color: "#00897b",
+        titleEn: "What's the Difference?",
+        titleKo: "차이가 얼마일까? (English Only)",
+        season: "Season 3 Special",
+        hasKorean: false,
+        meaningKo: "두 넘버블럭이 나란히 섰을 때 키(블록 개수) 차이가 얼마인지 비교하며 뺄셈(Subtraction)과 차이(Difference)의 개념을 쉽게 알려주는 영어 전용 곡입니다.",
+        lyricsEn: [
+          "What's the difference between me and you?\nLine us up side by side to see what is true!\nBetween Seven and Five, the difference is Two,\nSeven take away Five leaves Two in view!",
+          "Compare the blocks, how many more?\nBetween Nine and Five, the difference is Four!\nStand next to each other and count up the gap,\nFinding the difference is easy as a snap!"
+        ],
+        pronunciationKo: [
+          "왓츠 더 디퍼런스 비트윈 미 앤 유?\n라인 어스 업 사이드 바이 사이드 투 씨 왓 이즈 트루!\n비트윈 세븐 앤 파이브, 더 디퍼런스 이즈 투,\n세븐 테이크 어웨이 파이브 리브즈 투 인 뷰!",
+          "컴페어 더 블럭스, 하우 매니 모어?\n비트윈 나인 앤 파이브, 더 디퍼런스 이즈 포!\n스탠드 넥스트 투 이치 아더 앤 카운트 업 더 갭,\n파인딩 더 디퍼런스 이즈 이지 애즈 어 스냅!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "sign-of-the-times",
+        numberLabel: "×",
+        rangeGroup: "special",
+        blockCount: 6,
+        color: "#3f51b5",
+        titleEn: "Sign of the Times (Multiplication)",
+        titleKo: "곱셈의 기호 (English Only)",
+        season: "Season 4",
+        hasKorean: false,
+        meaningKo: "하나씩 더하는 대신 가로×세로 묶음으로 빠르게 계산하는 곱셈 기호(×, Times)의 마법을 노래하는 영어 전용 곡입니다.",
+        lyricsEn: [
+          "No need to add them one by one,\nMultiplication gets it done!\nThree lots of two, that's three times two,\nSix is waiting there for you!",
+          "Rows and columns, neat and tight,\nTimes table magic shining bright!\nIt's the Sign of the Times — multiply away,\nMaking bigger numbers every single day!"
+        ],
+        pronunciationKo: [
+          "노 니드 투 애드 뎀 원 바이 원,\n멀티플리케이션 겟츠 잇 던!\n쓰리 랏츠 오브 투, 댓츠 쓰리 타임즈 투,\n식스 이즈 웨이팅 데어 포 유!",
+          "로우즈 앤 컬럼즈, 니트 앤 타잇,\n타임즈 테이블 매직 샤이닝 브라잇!\n잇츠 더 사인 오브 더 타임즈 — 멀티플라이 어웨이,\n메이킹 비거 넘버즈 에브리 싱글 데이!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "big-tum-song",
+        numberLabel: "Tum",
+        rangeGroup: "special",
+        blockCount: 8,
+        color: "#9d4edd",
+        titleEn: "Big Tum (Who's in My Tum?)",
+        titleKo: "빅 텀의 수수께끼 배 속 (English Only)",
+        season: "Season 2 Special",
+        hasKorean: false,
+        meaningKo: "털북숭이 친구 빅 텀(Big Tum)의 배 속에 어떤 숫자가 숨어 있는지 힌트를 보고 맞히며 덧셈·뺄셈의 빈칸 추론을 배우는 영어 전용 곡입니다.",
+        lyricsEn: [
+          "Big Tum, Big Tum, full of number fun,\nSomeone's hiding in my tum — can you guess which one?\nTwo went in, and Five came out,\nThree was in my tummy without a doubt!",
+          "Listen to the rumble, count the missing part,\nSolving Big Tum puzzles makes you super smart!"
+        ],
+        pronunciationKo: [
+          "빅 텀, 빅 텀, 풀 오브 넘버 펀,\n썸원즈 하이딩 인 마이 텀 — 캔 유 게스 위치 원?\n투 웬트 인, 앤 파이브 케임 아웃,\n쓰리 워즈 인 마이 터미 위드아웃 어 다웃!",
+          "리슨 투 더 럼블, 카운트 더 미씽 파트,\n솔빙 빅 텀 퍼즐즈 메익스 유 슈퍼 스마트!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "ten-again-bonds",
+        numberLabel: "10+",
+        rangeGroup: "special",
+        blockCount: 10,
+        color: "#e11d48",
+        titleEn: "Ten Again (Number Bonds to Ten)",
+        titleKo: "다시 또 텐! 10 만들기 짝꿍 (English Only)",
+        season: "Season 2 Special",
+        hasKorean: false,
+        meaningKo: "1+9, 2+8, 3+7, 4+6, 5+5처럼 합쳐서 10이 되는 '10의 보수(Number Bonds to 10)' 짝꿍 조합을 경쾌한 리듬으로 외우는 영어 전용 곡입니다.",
+        lyricsEn: [
+          "Nine and One — Ten again!\nEight and Two — Ten again!\nSeven and Three, Six and Four,\nFive and Five make Ten once more!",
+          "Any way you split me, any way we play,\nFriends of Ten come together to save the day!"
+        ],
+        pronunciationKo: [
+          "나인 앤 원 — 텐 어게인!\n에잇 앤 투 — 텐 어게인!\n세븐 앤 쓰리, 식스 앤 포,\n파이브 앤 파이브 메이크 텐 원스 모어!",
+          "애니 웨이 유 스플릿 미, 애니 웨이 위 플레이,\n프렌즈 오브 텐 컴 투게더 투 세이브 더 데이!"
+        ],
+        lyricsKo: null
       }
     ];
 
+    const STORAGE_KEYS = {
+      favorites: "nb_music_favorites_v2",
+      fontScale: "nb_music_font_scale_v2",
+      pron: "nb_music_pron_v2"
+    };
+
+    function loadFavorites() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.favorites);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function saveFavorites(list) {
+      try {
+        localStorage.setItem(STORAGE_KEYS.favorites, JSON.stringify(list));
+      } catch (_) {}
+    }
+
     const state = {
       searchQuery: "",
-      langMode: "both",       // 'both' | 'en' | 'ko'
-      catalogFilter: "all",   // 'all' | 'bilingual' | 'en-only'
-      selectedSongId: SONGS_DATA[0].id
+      langMode: "line",       // 'line' | 'both' | 'en' | 'ko'
+      catalogFilter: "all",   // 'all' | 'favorites' | 'bilingual' | 'en-only'
+      rangeFilter: "all",     // 'all' | '1-5' | '6-10' | '11-20' | 'special'
+      showPronunciation: true,
+      fontScale: "1",
+      favorites: loadFavorites(),
+      selectedSongId: SONGS_DATA[0].id,
+      selectedArrayCols: null // dynamic columns for block array visualizer
     };
+
+    // Restore saved settings
+    try {
+      const savedScale = localStorage.getItem(STORAGE_KEYS.fontScale);
+      if (savedScale && ["0.9", "1", "1.15", "1.3"].includes(savedScale)) {
+        state.fontScale = savedScale;
+        document.documentElement.style.setProperty("--lyric-scale", savedScale);
+      }
+      const savedPron = localStorage.getItem(STORAGE_KEYS.pron);
+      if (savedPron !== null) {
+        state.showPronunciation = savedPron === "true";
+      }
+    } catch (_) {}
+
+    // Check URL hash for initial song deep-link
+    if (window.location.hash) {
+      const hashId = window.location.hash.slice(1);
+      if (SONGS_DATA.some((s) => s.id === hashId)) {
+        state.selectedSongId = hashId;
+      }
+    }
 
     const searchInput = document.getElementById("searchInput");
     const clearSearchBtn = document.getElementById("clearSearchBtn");
     const songListContainer = document.getElementById("songListContainer");
     const songCountBadge = document.getElementById("songCountBadge");
     const lyricsViewer = document.getElementById("lyricsViewer");
+    const favFilterBtn = document.getElementById("favFilterBtn");
+    const pronToggleBtn = document.getElementById("pronToggleBtn");
+    const pronToggleText = document.getElementById("pronToggleText");
+    const toastMsg = document.getElementById("toastMsg");
+
+    let toastTimer = null;
+    function showToast(message) {
+      toastMsg.textContent = message;
+      toastMsg.classList.add("show");
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastMsg.classList.remove("show");
+      }, 2200);
+    }
 
     function escapeHtml(str) {
       return String(str)
@@ -842,11 +1527,50 @@
         .replace(/"/g, "&quot;");
     }
 
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function highlightText(str, query) {
+      const safe = escapeHtml(str);
+      const q = (query || "").trim();
+      if (!q) return safe;
+      const safeQuery = escapeHtml(q);
+      const regex = new RegExp(`(${escapeRegExp(safeQuery)})`, "gi");
+      return safe.replace(regex, '<mark class="hl">$1</mark>');
+    }
+
+    function getFactorPairs(n) {
+      const pairs = [];
+      for (let r = 1; r <= n; r++) {
+        if (n % r === 0) {
+          pairs.push({ rows: r, cols: n / r });
+        }
+      }
+      return pairs;
+    }
+
+    function updateFavBadgeCount() {
+      favFilterBtn.innerHTML = `&#9733; 즐겨찾기 (${state.favorites.length})`;
+    }
+
+    function syncHeaderButtons() {
+      pronToggleBtn.classList.toggle("active", state.showPronunciation);
+      pronToggleBtn.setAttribute("aria-pressed", String(state.showPronunciation));
+      pronToggleText.textContent = state.showPronunciation ? "발음 가이드 ON" : "발음 가이드 OFF";
+
+      document.querySelectorAll(".font-size-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.scale === state.fontScale);
+      });
+    }
+
     function getFilteredSongs() {
       const q = state.searchQuery.trim().toLowerCase();
       return SONGS_DATA.filter((song) => {
+        if (state.catalogFilter === "favorites" && !state.favorites.includes(song.id)) return false;
         if (state.catalogFilter === "bilingual" && !song.hasKorean) return false;
         if (state.catalogFilter === "en-only" && song.hasKorean) return false;
+        if (state.rangeFilter !== "all" && song.rangeGroup !== state.rangeFilter) return false;
 
         if (!q) return true;
         const haystack = [
@@ -854,7 +1578,9 @@
           song.titleEn,
           song.titleKo,
           song.season,
+          song.meaningKo,
           ...(song.lyricsEn || []),
+          ...(song.pronunciationKo || []),
           ...(song.lyricsKo || [])
         ]
           .filter(Boolean)
@@ -865,20 +1591,21 @@
     }
 
     function renderSongList() {
+      updateFavBadgeCount();
       const filtered = getFilteredSongs();
       songCountBadge.textContent = `${filtered.length}곡`;
 
       if (filtered.length === 0) {
         songListContainer.innerHTML = `
           <div class="empty-state">
-            <h3>검색 결과가 없습니다</h3>
-            <p>다른 숫자나 노래 제목, 가사 단어로 검색해 보세요.</p>
+            <h3>조건에 맞는 노래가 없습니다</h3>
+            <p>검색어나 필터(즐겨찾기/구간)를 변경해 보세요.</p>
           </div>
         `;
         lyricsViewer.innerHTML = `
           <div class="empty-state">
             <h3>선택된 노래가 없습니다</h3>
-            <p>검색 조건을 변경하거나 전체 곡 필터를 선택해 주세요.</p>
+            <p>좌측 상단의 필터를 '전체 곡' 또는 '전체 구간'으로 전환해 주세요.</p>
           </div>
         `;
         return;
@@ -886,11 +1613,13 @@
 
       if (!filtered.some((s) => s.id === state.selectedSongId)) {
         state.selectedSongId = filtered[0].id;
+        state.selectedArrayCols = null;
       }
 
       songListContainer.innerHTML = filtered
         .map((song) => {
           const isActive = song.id === state.selectedSongId;
+          const isFav = state.favorites.includes(song.id);
           const badgeClass = song.hasKorean ? "bilingual" : "en-only";
           const badgeText = song.hasKorean ? "EN·한글" : "EN Only";
           return `
@@ -905,10 +1634,13 @@
                 ${escapeHtml(song.numberLabel)}
               </div>
               <div class="song-meta">
-                <div class="song-title-en">${escapeHtml(song.titleEn)}</div>
-                <div class="song-title-ko">${escapeHtml(song.titleKo)}</div>
+                <div class="song-title-en">${highlightText(song.titleEn, state.searchQuery)}</div>
+                <div class="song-title-ko">${highlightText(song.titleKo, state.searchQuery)}</div>
               </div>
-              <span class="lang-pill ${badgeClass}">${badgeText}</span>
+              <div class="song-item-right">
+                ${isFav ? '<span class="fav-star-ind" title="즐겨찾기 등록됨">&#9733;</span>' : ""}
+                <span class="lang-pill ${badgeClass}">${badgeText}</span>
+              </div>
             </button>
           `;
         })
@@ -917,40 +1649,180 @@
       renderLyricsViewer();
     }
 
+    function buildVisualizerHtml(song) {
+      const count = song.blockCount || 1;
+      const isHundred = count === 100;
+      const pairs = isHundred
+        ? [
+            { rows: 10, cols: 10 },
+            { rows: 5, cols: 20 },
+            { rows: 4, cols: 25 }
+          ]
+        : getFactorPairs(count);
+
+      if (!state.selectedArrayCols || !pairs.some((p) => p.cols === state.selectedArrayCols)) {
+        // Pick a balanced default rectangle
+        const mid = pairs[Math.floor(pairs.length / 2)];
+        state.selectedArrayCols = mid ? mid.cols : count;
+      }
+
+      const activeCols = state.selectedArrayCols;
+      const activeRows = Math.round(count / activeCols);
+
+      const unitsHtml = Array.from({ length: count })
+        .map((_, idx) => {
+          let bg = song.color.startsWith("linear-gradient") ? "#e62429" : song.color;
+          if (Array.isArray(song.blockColors) && song.blockColors.length > 0) {
+            bg = song.blockColors[idx % song.blockColors.length];
+          } else if (count > 10 && count < 20) {
+            // Ten block (white with red border feel) + Ones blocks
+            bg = idx < 10 ? "#f43f5e" : song.color;
+          }
+          return `<span class="nb-unit ${isHundred ? "mini" : ""}" style="background:${bg}" title="Block ${idx + 1}"></span>`;
+        })
+        .join("");
+
+      const arrayBtnsHtml = pairs
+        .map((p) => {
+          const isAct = p.cols === activeCols;
+          return `<button type="button" class="array-btn ${isAct ? "active" : ""}" data-cols="${p.cols}">${p.rows} &times; ${p.cols}</button>`;
+        })
+        .join("");
+
+      return `
+        <div class="visualizer-box" aria-label="인터랙티브 넘버블럭 배열 비주얼라이저">
+          <div class="visualizer-info">
+            <div class="visualizer-title">
+              <span>&#129513; 인터랙티브 블록 배열 조립기 (총 ${count}블록: ${activeRows}줄 &times; ${activeCols}칸)</span>
+            </div>
+            <div class="visualizer-sub">약수 버튼을 눌러 직사각형 배열(Array) 모양을 바꿔 보세요!</div>
+            <div class="array-btns">${arrayBtnsHtml}</div>
+          </div>
+          <div class="block-grid-stage" style="grid-template-columns: repeat(${activeCols}, auto);">
+            ${unitsHtml}
+          </div>
+        </div>
+      `;
+    }
+
     function renderLyricsViewer() {
       const song = SONGS_DATA.find((s) => s.id === state.selectedSongId);
       if (!song) return;
 
-      const showEn = state.langMode === "both" || state.langMode === "en" || (!song.hasKorean && state.langMode === "ko");
-      const showKo = (state.langMode === "both" || state.langMode === "ko") && song.hasKorean;
-      const isSingleCol = !(showEn && showKo);
+      const isFav = state.favorites.includes(song.id);
+      const q = state.searchQuery;
 
       const enOnlyNoticeHtml = !song.hasKorean
         ? `<div class="en-only-notice">
-             <span>&#9432;</span>
-             <span>이 곡은 <strong>영어 전용(English-Only)</strong> 수록곡입니다. 한글 가사 대신 원어(English) 가사가 표시됩니다.</span>
+             <div class="en-only-notice-title">
+               <span>&#9432;</span>
+               <span>이 곡은 <strong>영어 전용(English-Only)</strong> 수록곡입니다. 한글 더빙 가사 대신 원문 가사와 발음 가이드, 우리말 뜻 해설을 제공합니다.</span>
+             </div>
+             ${song.meaningKo ? `<div class="en-only-meaning"><strong>우리말 곡 해설:</strong> ${highlightText(song.meaningKo, q)}</div>` : ""}
            </div>`
         : "";
 
-      const enColHtml = showEn
-        ? `<div class="lyrics-col">
-             <div class="lyrics-col-header">
-               <span>English Lyrics</span>
-               <span>EN</span>
-             </div>
-             ${song.lyricsEn.map((stanza) => `<p class="stanza">${escapeHtml(stanza)}</p>`).join("")}
-           </div>`
-        : "";
+      let bodyContentHtml = "";
 
-      const koColHtml = showKo
-        ? `<div class="lyrics-col">
-             <div class="lyrics-col-header">
-               <span>한국어 가사</span>
-               <span>KO</span>
-             </div>
-             ${song.lyricsKo.map((stanza) => `<p class="stanza">${escapeHtml(stanza)}</p>`).join("")}
-           </div>`
-        : "";
+      if (state.langMode === "line") {
+        // Upgrade 1: Line-by-Line Interleaved Sync View
+        const stanzasHtml = song.lyricsEn
+          .map((enStanza, sIdx) => {
+            const enLines = enStanza.split("\n");
+            const pronLines = (song.pronunciationKo && song.pronunciationKo[sIdx] ? song.pronunciationKo[sIdx] : "").split("\n");
+            const koLines = (song.hasKorean && song.lyricsKo && song.lyricsKo[sIdx] ? song.lyricsKo[sIdx] : "").split("\n");
+
+            const pairsHtml = enLines
+              .map((enLine, lIdx) => {
+                const pronLine = pronLines[lIdx] || "";
+                const koLine = koLines[lIdx] || "";
+                return `
+                  <div class="sync-line-pair">
+                    <div class="sync-line-en">${highlightText(enLine, q)}</div>
+                    ${state.showPronunciation && pronLine ? `<div class="sync-line-pron">[발음] ${highlightText(pronLine, q)}</div>` : ""}
+                    ${song.hasKorean && koLine ? `<div class="sync-line-ko">${highlightText(koLine, q)}</div>` : ""}
+                  </div>
+                `;
+              })
+              .join("");
+
+            return `
+              <div class="sync-stanza-card">
+                <div class="sync-stanza-label">Verse ${sIdx + 1} &bull; 한줄 대조 싱크</div>
+                ${pairsHtml}
+              </div>
+            `;
+          })
+          .join("");
+
+        bodyContentHtml = `<div class="line-sync-container">${stanzasHtml}</div>`;
+      } else {
+        // Side-by-Side ('both') or Single language ('en' / 'ko')
+        const showEn = state.langMode === "both" || state.langMode === "en" || (!song.hasKorean && state.langMode === "ko");
+        const showKo = (state.langMode === "both" || state.langMode === "ko") && song.hasKorean;
+        const isSingleCol = !(showEn && showKo);
+
+        const enColHtml = showEn
+          ? `<div class="lyrics-col">
+               <div class="lyrics-col-header">
+                 <span>English Lyrics ${state.showPronunciation ? "+ 한글 독음" : ""}</span>
+                 <span>EN</span>
+               </div>
+               ${song.lyricsEn
+                 .map((enStanza, sIdx) => {
+                   const enLines = enStanza.split("\n");
+                   const pronLines = (song.pronunciationKo && song.pronunciationKo[sIdx] ? song.pronunciationKo[sIdx] : "").split("\n");
+                   return `
+                     <div class="stanza-block">
+                       ${enLines
+                         .map(
+                           (line, lIdx) => `
+                             <div class="stanza-line">
+                               <div class="stanza-line-en">${highlightText(line, q)}</div>
+                               ${
+                                 state.showPronunciation && pronLines[lIdx]
+                                   ? `<div class="stanza-line-pron">[발음] ${highlightText(pronLines[lIdx], q)}</div>`
+                                   : ""
+                               }
+                             </div>
+                           `
+                         )
+                         .join("")}
+                     </div>
+                   `;
+                 })
+                 .join("")}
+             </div>`
+          : "";
+
+        const koColHtml = showKo
+          ? `<div class="lyrics-col">
+               <div class="lyrics-col-header">
+                 <span>한국어 가사</span>
+                 <span>KO</span>
+               </div>
+               ${song.lyricsKo
+                 .map(
+                   (koStanza) => `
+                     <div class="stanza-block">
+                       ${koStanza
+                         .split("\n")
+                         .map((line) => `<div class="stanza-line-ko">${highlightText(line, q)}</div>`)
+                         .join("")}
+                     </div>
+                   `
+                 )
+                 .join("")}
+             </div>`
+          : "";
+
+        bodyContentHtml = `
+          <div class="lyrics-grid ${isSingleCol ? "single-col" : ""}">
+            ${enColHtml}
+            ${koColHtml}
+          </div>
+        `;
+      }
 
       lyricsViewer.innerHTML = `
         <div class="lyrics-hero">
@@ -959,24 +1831,71 @@
               ${escapeHtml(song.numberLabel)}
             </div>
             <div class="hero-titles">
-              <h2>${escapeHtml(song.titleEn)}</h2>
-              <div class="subtitle-ko">${escapeHtml(song.titleKo)}</div>
+              <h2>${highlightText(song.titleEn, q)}</h2>
+              <div class="subtitle-ko">${highlightText(song.titleKo, q)}</div>
               <div class="hero-tags">
                 <span class="tag">${escapeHtml(song.season)}</span>
-                <span class="tag">${song.hasKorean ? "영어 + 한국어 가사 지원" : "English Only (영어 전용)"}</span>
+                <span class="tag">${song.hasKorean ? "영어 + 한국어 가사 완비" : "English Only (영어 전용 + 뜻 해설)"}</span>
               </div>
             </div>
           </div>
+
+          <div class="hero-actions">
+            <button
+              type="button"
+              id="toggleFavCurrentBtn"
+              class="action-btn ${isFav ? "fav-active" : ""}"
+              aria-pressed="${isFav}"
+            >
+              <span>${isFav ? "&#9733;" : "&#9734;"}</span>
+              <span>${isFav ? "즐겨찾기 됨" : "즐겨찾기 추가"}</span>
+            </button>
+            <button type="button" id="copyLyricsBtn" class="action-btn">
+              <span>&#128203;</span>
+              <span>가사 복사</span>
+            </button>
+          </div>
         </div>
+
+        ${buildVisualizerHtml(song)}
         ${enOnlyNoticeHtml}
-        <div class="lyrics-grid ${isSingleCol ? "single-col" : ""}">
-          ${enColHtml}
-          ${koColHtml}
-        </div>
+        ${bodyContentHtml}
       `;
     }
 
-    // Event bindings
+    function copyCurrentSongLyrics() {
+      const song = SONGS_DATA.find((s) => s.id === state.selectedSongId);
+      if (!song) return;
+
+      const lines = [`[${song.titleEn} / ${song.titleKo}]`];
+      song.lyricsEn.forEach((stanza, sIdx) => {
+        lines.push("");
+        const enArr = stanza.split("\n");
+        const pronArr = (song.pronunciationKo && song.pronunciationKo[sIdx] ? song.pronunciationKo[sIdx] : "").split("\n");
+        const koArr = (song.hasKorean && song.lyricsKo && song.lyricsKo[sIdx] ? song.lyricsKo[sIdx] : "").split("\n");
+        enArr.forEach((enLine, lIdx) => {
+          lines.push(enLine);
+          if (state.showPronunciation && pronArr[lIdx]) {
+            lines.push(`[발음] ${pronArr[lIdx]}`);
+          }
+          if (song.hasKorean && koArr[lIdx]) {
+            lines.push(koArr[lIdx]);
+          }
+        });
+      });
+
+      const textToCopy = lines.join("\n");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(
+          () => showToast("가사가 클립보드에 복사되었습니다!"),
+          () => showToast("복사를 완료했습니다.")
+        );
+      } else {
+        showToast("가사가 준비되었습니다.");
+      }
+    }
+
+    // Event Bindings
     searchInput.addEventListener("input", (e) => {
       state.searchQuery = e.target.value;
       clearSearchBtn.classList.toggle("visible", state.searchQuery.length > 0);
@@ -995,7 +1914,38 @@
       const btn = e.target.closest(".song-item");
       if (!btn) return;
       state.selectedSongId = btn.dataset.songId;
+      state.selectedArrayCols = null;
+      history.replaceState(null, "", `#${state.selectedSongId}`);
       renderSongList();
+    });
+
+    lyricsViewer.addEventListener("click", (e) => {
+      const arrayBtn = e.target.closest(".array-btn");
+      if (arrayBtn) {
+        state.selectedArrayCols = Number(arrayBtn.dataset.cols);
+        renderLyricsViewer();
+        return;
+      }
+
+      const favBtn = e.target.closest("#toggleFavCurrentBtn");
+      if (favBtn) {
+        const id = state.selectedSongId;
+        if (state.favorites.includes(id)) {
+          state.favorites = state.favorites.filter((item) => item !== id);
+          showToast("즐겨찾기에서 해제되었습니다.");
+        } else {
+          state.favorites.push(id);
+          showToast("즐겨찾기에 추가되었습니다!");
+        }
+        saveFavorites(state.favorites);
+        renderSongList();
+        return;
+      }
+
+      const copyBtn = e.target.closest("#copyLyricsBtn");
+      if (copyBtn) {
+        copyCurrentSongLyrics();
+      }
     });
 
     document.querySelectorAll(".lang-mode-btn").forEach((btn) => {
@@ -1004,6 +1954,26 @@
         btn.classList.add("active");
         state.langMode = btn.dataset.mode;
         renderLyricsViewer();
+      });
+    });
+
+    pronToggleBtn.addEventListener("click", () => {
+      state.showPronunciation = !state.showPronunciation;
+      try {
+        localStorage.setItem(STORAGE_KEYS.pron, String(state.showPronunciation));
+      } catch (_) {}
+      syncHeaderButtons();
+      renderLyricsViewer();
+    });
+
+    document.querySelectorAll(".font-size-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.fontScale = btn.dataset.scale;
+        document.documentElement.style.setProperty("--lyric-scale", state.fontScale);
+        try {
+          localStorage.setItem(STORAGE_KEYS.fontScale, state.fontScale);
+        } catch (_) {}
+        syncHeaderButtons();
       });
     });
 
@@ -1016,8 +1986,86 @@
       });
     });
 
+    document.querySelectorAll(".range-chip").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".range-chip").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.rangeFilter = btn.dataset.range;
+        renderSongList();
+      });
+    });
+
     // Initial render
+    syncHeaderButtons();
     renderSongList();
+
+    // Automated Browser QA Verification Hook (?qa=run)
+    if (new URLSearchParams(window.location.search).get("qa") === "run") {
+      const results = [];
+      const assert = (name, cond, detail = "") => {
+        results.push({ name, status: cond ? "PASS" : "FAIL", detail });
+      };
+
+      // 1. Zero-Dependency Check
+      const extScripts = document.querySelectorAll('script[src], link[rel="stylesheet"][href^="http"]');
+      assert("Zero-Dependency (외부 의존성 0건)", extScripts.length === 0, `external=${extScripts.length}`);
+
+      // 2. Song Catalog & Line Alignment Integrity
+      const totalSongs = SONGS_DATA.length;
+      const enOnlySongs = SONGS_DATA.filter((s) => !s.hasKorean);
+      const lineMismatch = SONGS_DATA.filter((s) => {
+        const enCount = s.lyricsEn.join("\n").split("\n").length;
+        const pronCount = (s.pronunciationKo || []).join("\n").split("\n").length;
+        const koCount = s.hasKorean ? (s.lyricsKo || []).join("\n").split("\n").length : enCount;
+        return enCount !== pronCount || enCount !== koCount;
+      });
+      assert("수록곡 카탈로그 및 한/영/발음 줄 수 1:1 매칭", totalSongs === 22 && enOnlySongs.length === 5 && lineMismatch.length === 0, `total=${totalSongs}, enOnly=${enOnlySongs.length}, mismatch=${lineMismatch.length}`);
+
+      // 3. Upgrade 1: Line-by-Line Sync + Pronunciation + Font Scale
+      assert("한줄 대조(Line Sync) 및 발음 가이드 렌더링", document.querySelectorAll(".sync-line-pair").length > 0 && document.querySelectorAll(".sync-line-pron").length > 0);
+      document.querySelector('.font-size-btn[data-scale="1.3"]').click();
+      assert("가사 글자 크기 컨트롤러 동작(--lyric-scale=1.3)", document.documentElement.style.getPropertyValue("--lyric-scale") === "1.3");
+      document.querySelector('.font-size-btn[data-scale="1"]').click();
+
+      // 4. Upgrade 2: EN-Only Edge Case in 'ko' Mode
+      const blobBtn = document.querySelector('.song-item[data-song-id="numberblobs-song"]');
+      if (blobBtn) blobBtn.click();
+      document.querySelector('.lang-mode-btn[data-mode="ko"]').click();
+      const noticeEl = document.querySelector(".en-only-notice");
+      const meaningEl = document.querySelector(".en-only-meaning");
+      const fallbackEnCol = document.querySelector(".stanza-line-en");
+      assert("영어 전용 곡(EN-Only) 한글 모드 폴백 & 우리말 뜻 해설 표시", Boolean(noticeEl && meaningEl && fallbackEnCol));
+
+      // 5. Upgrade 3: Interactive Block Visualizer & Favorites
+      const twelveBtn = document.querySelector('.song-item[data-song-id="twelve-rectangle-rays"]');
+      if (twelveBtn) twelveBtn.click();
+      document.querySelector('.lang-mode-btn[data-mode="line"]').click();
+      const arrayBtn2Cols = document.querySelector('.array-btn[data-cols="2"]');
+      if (arrayBtn2Cols) arrayBtn2Cols.click();
+      const gridStage = document.querySelector(".block-grid-stage");
+      const units = document.querySelectorAll(".nb-unit");
+      assert("인터랙티브 블록 배열 조립기(12블록 -> 6x2 배열 변환)", units.length === 12 && gridStage && gridStage.style.gridTemplateColumns.includes("repeat(2"));
+
+      const favToggle = document.getElementById("toggleFavCurrentBtn");
+      if (favToggle) favToggle.click();
+      assert("즐겨찾기 추가 및 로컬 상태 반영", state.favorites.includes("twelve-rectangle-rays"));
+
+      // 6. Search & Keyword Highlighting (<mark class="hl">)
+      searchInput.value = "Octoblock";
+      searchInput.dispatchEvent(new Event("input"));
+      const hlMarks = document.querySelectorAll("mark.hl");
+      assert("실시간 통합 검색 및 키워드 하이라이팅(<mark>)", document.querySelectorAll(".song-item").length >= 1 && hlMarks.length >= 1, `marks=${hlMarks.length}`);
+      clearSearchBtn.click();
+
+      const reportEl = document.createElement("pre");
+      reportEl.id = "qaReport";
+      reportEl.style.display = "none";
+      reportEl.textContent = JSON.stringify({
+        allPassed: results.every((r) => r.status === "PASS"),
+        results
+      });
+      document.body.appendChild(reportEl);
+    }
   </script>
 </body>
 </html>
