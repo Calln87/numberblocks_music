@@ -912,9 +912,10 @@
     <div class="toolbar-row">
       <div class="chip-bar" role="group" aria-label="숫자 구간 빠른 필터">
         <button type="button" class="range-chip active" data-range="all">전체 구간</button>
-        <button type="button" class="range-chip" data-range="1-5">숫자 1 ~ 5</button>
+        <button type="button" class="range-chip" data-range="times-table">&#10006; 구구단 (1단~10단)</button>
+        <button type="button" class="range-chip" data-range="1-5">숫자 0 ~ 5</button>
         <button type="button" class="range-chip" data-range="6-10">숫자 6 ~ 10</button>
-        <button type="button" class="range-chip" data-range="11-20">숫자 11 ~ 20</button>
+        <button type="button" class="range-chip" data-range="11-20">숫자 11 ~ 21</button>
         <button type="button" class="range-chip" data-range="special">테마 &amp; 100 &amp; 스페셜</button>
       </div>
     </div>
@@ -935,7 +936,7 @@
   <div id="toastMsg" class="toast" role="status" aria-live="polite"></div>
 
   <footer>
-    Numberblocks Fan Lyrics Explorer v2.0 &bull; Zero-Dependency Single HTML Application (EN / KO / Pronunciation / Block Arrays)
+    Numberblocks Fan Lyrics Explorer v2.1 &bull; Zero-Dependency Single HTML Application (EN / KO / Pronunciation / Times Tables &amp; Block Arrays)
   </footer>
 
   <script>
@@ -965,6 +966,29 @@
           "하나, 둘, 셋, 넷, 다섯!\n넘버블럭스!\n여섯, 일곱, 여덟, 아홉, 열!\n넘버블럭스!",
           "일에 일을 더하면 이!\n거기에 일을 더하면 나 — 바로 삼!\n오, 사, 삼, 이, 일 —\n신나는 숫자 놀이 시간!",
           "우리를 믿어봐,\n우린 넘버블럭스!"
+        ]
+      },
+      {
+        id: "zero-nothing-there",
+        numberLabel: "0",
+        rangeGroup: "1-5",
+        blockCount: 1,
+        color: "#94a3b8",
+        titleEn: "Zero (When Nothing's There)",
+        titleKo: "제로 (아무것도 없을 때, 0!)",
+        season: "Season 3",
+        hasKorean: true,
+        lyricsEn: [
+          "Zero birds up in the sky,\nZero clouds are floating by!\nWhen there's nothing there to see,\nZero is the number to be!",
+          "One take away One leaves Zero,\nEmpty space — I'm the hero!\nZero blocks and zero憂,\nNothing at all means Zero's with you!"
+        ],
+        pronunciationKo: [
+          "제로 버즈 업 인 더 스카이,\n제로 클라우즈 아 플로팅 바이!\n웬 데어즈 나씽 데어 투 씨,\n제로 이즈 더 넘버 투 비!",
+          "원 테이크 어웨이 원 리브즈 제로,\n엠프티 스페이스 — 아임 더 히어로!\n제로 블럭스 앤 제로 큐,\n나씽 앳 올 민즈 제로즈 위드 유!"
+        ],
+        lyricsKo: [
+          "하늘에 날아가는 새가 영(0)마리,\n떠다니는 구름도 영(0)개!\n눈앞에 아무것도 보이지 않을 때,\n바로 나 제로(0)가 나타날 차례!",
+          "일(1)에서 일(1)을 빼면 제로(0),\n텅 빈 공간의 멋진 주인공!\n블록이 하나도 없을 때,\n아무것도 없다는 건 제로와 함께라는 뜻!"
         ]
       },
       {
@@ -1245,6 +1269,52 @@
         ]
       },
       {
+        id: "thirteen-unlucky-some",
+        numberLabel: "13",
+        rangeGroup: "11-20",
+        blockCount: 13,
+        color: "#ca8a04",
+        titleEn: "Thirteen (Oops! Ten and Three)",
+        titleKo: "써틴 (우당탕탕 열셋이지만 괜찮아!)",
+        season: "Season 3",
+        hasKorean: true,
+        lyricsEn: [
+          "Whenever someone says my name — Thirteen!\nI fall apart into Ten and Three on the scene!\nWhoops-a-daisy, banana skin slide,\nTen and Three laughing side by side!",
+          "Seven and Six, or Eight and Five,\nThe luckiest Thirteen to be alive!"
+        ],
+        pronunciationKo: [
+          "웬에버 썸원 세이즈 마이 네임 — 써틴!\n아이 폴 어파트 인투 텐 앤 쓰리 온 더 씬!\n웁스-어-데이지, 바나나 스킨 슬라이드,\n텐 앤 쓰리 래핑 사이드 바이 사이드!",
+          "세븐 앤 식스, 오어 에잇 앤 파이브,\n더 럭키이스트 써틴 투 비 얼라이브!"
+        ],
+        lyricsKo: [
+          "누군가 내 이름 써틴(13)을 부르면!\n그만 우당탕 텐(10)과 쓰리(3)로 쪼개지고 말지!\n아이코 조심, 바나나 껍질에 미끄러져도,\n텐과 쓰리가 나란히 서서 까르르 웃네!",
+          "칠(7) 더하기 육(6), 아니면 팔(8) 더하기 오(5),\n알고 보면 유쾌하고 행운 가득한 열셋!"
+        ]
+      },
+      {
+        id: "fourteen-skateboard",
+        numberLabel: "14",
+        rangeGroup: "11-20",
+        blockCount: 14,
+        color: "#7c3aed",
+        titleEn: "Fourteen (Extreme Skateboarder)",
+        titleKo: "포틴 (더블 세븐 익스트림 스케이트보더!)",
+        season: "Season 3",
+        hasKorean: true,
+        lyricsEn: [
+          "Jump on the board, let's ride the ramp,\nNumberblock Fourteen, the skating champ!\nDouble Seven — lucky times two,\nDual rainbow helmets shining through!",
+          "Ten and Four, or two rows of Seven,\nSkatepark tricks up to the heaven!"
+        ],
+        pronunciationKo: [
+          "점프 온 더 보드, 렛츠 라이드 더 램프,\n넘버블럭 포틴, 더 스케이팅 챔프!\n더블 세븐 — 럭키 타임즈 투,\n듀얼 레인보우 헬멧츠 샤이닝 쓰루!",
+          "텐 앤 포, 오어 투 로우즈 오브 세븐,\n스케이트파크 트릭스 업 투 더 헤븐!"
+        ],
+        lyricsKo: [
+          "스케이트보드에 올라타 점프대를 날아올라,\n넘버블럭 포틴(14), 스케이트 챔피언!\n세븐(7)이 두 명 — 행운도 두 배,\n무지개 헬멧이 멋지게 반짝이네!",
+          "텐(10)과 포(4), 또는 세븐(7)씩 두 줄로,\n하늘 높이 익스트림 묘기를 펼쳐라!"
+        ]
+      },
+      {
         id: "fifteen-step-squad",
         numberLabel: "15",
         rangeGroup: "11-20",
@@ -1291,6 +1361,75 @@
         ]
       },
       {
+        id: "seventeen-artist",
+        numberLabel: "17",
+        rangeGroup: "11-20",
+        blockCount: 17,
+        color: "#2563eb",
+        titleEn: "Seventeen (The Painter of Seventeen)",
+        titleKo: "세븐틴 (열일곱 점의 멋진 예술가!)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "Splash the canvas, paint seventeen,\nSeventeen swans on a lake so green!\nOne Ten and Seven — rainbow and white,\nEvery masterpiece painted just right!",
+          "Not one, not two, but seventeen stars,\nSeventeen flowers in seventeen jars!"
+        ],
+        pronunciationKo: [
+          "스플래쉬 더 캔버스, 페인트 세븐틴,\n세븐틴 스완즈 온 어 레이크 쏘 그린!\n원 텐 앤 세븐 — 레인보우 앤 화이트,\n에브리 마스터피스 페인티드 저스트 라잇!",
+          "낫 원, 낫 투, 벗 세븐틴 스타즈,\n세븐틴 플라워즈 인 세븐틴 자즈!"
+        ],
+        lyricsKo: [
+          "캔버스 위에 물감을 펼쳐 열일곱을 그려요,\n초록빛 호수 위의 백조도 열일곱 마리!\n텐(10)과 무지개 세븐(7)이 만나면,\n그리는 작품마다 열일곱 개씩 걸작이 탄생해!",
+          "하나도 둘도 아닌 열일곱 개의 별,\n열일곱 개의 꽃병 속 열일곱 송이 꽃!"
+        ]
+      },
+      {
+        id: "eighteen-speedy-rectangle",
+        numberLabel: "18",
+        rangeGroup: "11-20",
+        blockCount: 18,
+        color: "#db2777",
+        titleEn: "Eighteen (Born to Ride the Arrays!)",
+        titleKo: "에이틴 (초고속 슈퍼 직사각형 레이서!)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "Fastest rectangle on the track,\nTwo by nine or nine by two — zoom and back!\nThree by six, or six by three,\nNobody switches arrays faster than me!",
+          "Ten and Eight, or double Nine,\nCrossing the finish line right on time!"
+        ],
+        pronunciationKo: [
+          "패스티스트 렉탱글 온 더 트랙,\n투 바이 나인 오어 나인 바이 투 — 줌 앤 백!\n쓰리 바이 식스, 오어 식스 바이 쓰리,\n노바디 스위치즈 어레이즈 패스터 댄 미!",
+          "텐 앤 에잇, 오어 더블 나인,\n크로싱 더 피니쉬 라인 라잇 온 타임!"
+        ],
+        lyricsKo: [
+          "트랙 위에서 가장 빠른 직사각형 레이서,\n2 곱하기 9, 9 곱하기 2 — 쌩쌩 달린다!\n3 곱하기 6, 아니면 6 곱하기 3,\n누구보다 빠르게 배열(어레이)을 변신하지!",
+          "텐(10)과 에잇(8), 또는 더블 나인(9+9),\n결승선을 번개처럼 통과하는 에이틴(18)!"
+        ]
+      },
+      {
+        id: "nineteen-crazy-shapes",
+        numberLabel: "19",
+        rangeGroup: "11-20",
+        blockCount: 19,
+        color: "#4f46e5",
+        titleEn: "Nineteen (One-Off Crazy Shapes!)",
+        titleKo: "나인틴 (통통 튀는 자유자재 모양 천재!)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "I can't make a rectangle, wait and see,\nJust one block shy of Twenty, that's me!\nOne block over Eighteen too,\nCrazy shapes in everything I do!",
+          "Giraffe or cactus, camel orcrown,\nThe bendiest Numberblock in the town!"
+        ],
+        pronunciationKo: [
+          "아이 캔트 메이크 어 렉탱글, 웨잇 앤 씨,\n저스트 원 블럭 샤이 오브 트웬티, 댓츠 미!\n원 블럭 오버 에이틴 투,\n크레이지 셰입스 인 에브리씽 아이 두!",
+          "지라프 오어 캑터스, 캐멀 오어 크라운,\n더 벤디이스트 넘버블럭 인 더 타운!"
+        ],
+        lyricsKo: [
+          "직사각형은 못 만들지만 잘 지켜봐,\n트웬티(20)에서 딱 한 칸 모자란 나인틴(19)!\n에이틴(18)보다는 딱 한 칸 더 많아서,\n세상에서 제일 기발한 모양으로 변신하지!",
+          "기린도 되었다가 선인장, 낙타, 왕관까지,\n마을에서 가장 자유자재로 변신하는 나인틴!"
+        ]
+      },
+      {
         id: "twenty-two-tens",
         numberLabel: "20",
         rangeGroup: "11-20",
@@ -1311,6 +1450,268 @@
         lyricsKo: [
           "텐(10)이 하나, 텐(10)이 둘 — 트웬티(20)가 왔다!\n모자를 살짝 기울이며 탱고 인사!\n2 곱하기 10, 또는 10 곱하기 2,\n너를 위해 멋진 탱고 춤을 추지!",
           "오(5)가 넷, 사(4)가 다섯, 이(2)가 열 개로 발맞춰,\n리듬과 멋이 넘치는 트웬티!\n십씩 세어 볼까: 십, 이십 — 올레!\n트웬티와 함께 신나게 춤춰요!"
+        ]
+      },
+      {
+        id: "twenty-one-explorer",
+        numberLabel: "21",
+        rangeGroup: "11-20",
+        blockCount: 21,
+        color: "#0d9488",
+        titleEn: "Twenty-One (More to Explore!)",
+        titleKo: "트웬티원 (숫자 탐험가 스물하나!)",
+        season: "Season 4",
+        hasKorean: true,
+        lyricsEn: [
+          "Two Tens and One, pack up the gear,\nNumber Explorer Twenty-One is here!\nThree sevens standing in a row,\nOr step-squad stairs from One to Six we go!",
+          "Beyond Twenty, there's so much more,\nA whole new world of numbers to explore!"
+        ],
+        pronunciationKo: [
+          "투 텐즈 앤 원, 팩 업 더 기어,\n넘버 익스플로러 트웬티-원 이즈 히어!\n쓰리 세븐즈 스탠딩 인 어 로우,\n오어 스텝-스쿼드 스테어즈 프롬 원 투 식스 위 고!",
+          "비욘드 트웬티, 데어즈 쏘 머치 모어,\n어 홀 뉴 월드 오브 넘버즈 투 익스플로어!"
+        ],
+        lyricsKo: [
+          "텐(10)이 둘에 원(1)이 하나, 탐험 장비를 챙겨라,\n용감한 숫자 탐험가 트웬티원(21) 등장!\n행운의 세븐(7) 세 명이 나란히 서거나,\n1부터 6까지 여섯 계단 특공대로 변신!",
+          "이십(20) 너머에는 더 놀라운 숫자들이 가득해,\n새로운 숫자 세상을 끝없이 탐험해 보자!"
+        ]
+      },
+      {
+        id: "one-times-table",
+        numberLabel: "1×",
+        rangeGroup: "times-table",
+        tableBase: 1,
+        blockCount: 10,
+        color: "#e62429",
+        titleEn: "One Times Table (Meet the One Times Table)",
+        titleKo: "1단 구구단 노래 (원 타임즈 테이블)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One times one is One!\nTwo times one is Two!\nThree times one is Three!\nFour times one is Four — calling out to you!",
+          "Five times one is Five, Six times one is Six,\nSeven times one is Seven, Eight times one is Eight!\nNine times one is Nine, Ten times one is Ten,\nThe One Times Table is your number one friend!"
+        ],
+        pronunciationKo: [
+          "원 타임즈 원 이즈 원!\n투 타임즈 원 이즈 투!\n쓰리 타임즈 원 이즈 쓰리!\n포 타임즈 원 이즈 포 — 콜링 아웃 투 유!",
+          "파이브 타임즈 원 이즈 파이브, 식스 타임즈 원 이즈 식스,\n세븐 타임즈 원 이즈 세븐, 에잇 타임즈 원 이즈 에잇!\n나인 타임즈 원 이즈 나인, 텐 타임즈 원 이즈 텐,\n더 원 타임즈 테이블 이즈 유어 넘버 원 프렌드!"
+        ],
+        lyricsKo: [
+          "1 곱하기 1은 1 (일 일은 일)!\n2 곱하기 1은 2 (이 일은 이)!\n3 곱하기 1은 3 (삼 일은 삼)!\n4 곱하기 1은 4 — 신나게 불러 봐!",
+          "5 곱하기 1은 5, 6 곱하기 1은 6,\n7 곱하기 1은 7, 8 곱하기 1은 8!\n9 곱하기 1은 9, 10 곱하기 1은 10,\n1단 구구단 표는 우리의 최고 단짝 친구!"
+        ]
+      },
+      {
+        id: "two-times-table",
+        numberLabel: "2×",
+        rangeGroup: "times-table",
+        tableBase: 2,
+        blockCount: 20,
+        color: "#ff7b00",
+        titleEn: "Two Times Table (Two Times Shoe Shop)",
+        titleKo: "2단 구구단 노래 (투의 짝짝 신발 가게)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One two is Two, two twos are Four,\nThree twos are Six — tap dancing on the floor!\nFour twos are Eight, five twos are Ten,\nStep inside the Two Times Shoe Shop again!",
+          "Six twos are Twelve, seven twos are Fourteen,\nEight twos are Sixteen — the sharpest shoes seen!\nNine twos are Eighteen, ten twos are Twenty,\nCounting up in twos, we've got shoes a-plenty!"
+        ],
+        pronunciationKo: [
+          "원 투 이즈 투, 투 투즈 아 포,\n쓰리 투즈 아 식스 — 탭 댄싱 온 더 플로어!\n포 투즈 아 에잇, 파이브 투즈 아 텐,\n스텝 인사이드 더 투 타임즈 슈 샵 어게인!",
+          "식스 투즈 아 트웰브, 세븐 투즈 아 포틴,\n에잇 투즈 아 식스틴 — 더 샤피스트 슈즈 씬!\n나인 투즈 아 에이틴, 텐 투즈 아 트웬티,\n카운팅 업 인 투즈, 위브 갓 슈즈 어-플렌티!"
+        ],
+        lyricsKo: [
+          "2 곱하기 1은 2, 2 곱하기 2는 4,\n2 곱하기 3은 6 — 마룻바닥 위에서 탭댄스를!\n2 곱하기 4는 8, 2 곱하기 5는 10,\n투의 신나는 신발 가게로 어서 오세요!",
+          "2 곱하기 6은 12, 2 곱하기 7은 14,\n2 곱하기 8은 16 — 반짝이는 멋쟁이 구두!\n2 곱하기 9는 18, 2 곱하기 10은 20,\n둘씩 둘씩 짝지어 세면 2단 구구단 완성!"
+        ]
+      },
+      {
+        id: "three-times-table",
+        numberLabel: "3×",
+        rangeGroup: "times-table",
+        tableBase: 3,
+        blockCount: 15,
+        color: "#eab308",
+        titleEn: "Three Times Table (Circus of Threes)",
+        titleKo: "3단 구구단 노래 (쓰리의 서커스 쇼)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "Roll up, roll up to the Circus of Threes!\nOne three is Three, two threes are Six with ease!\nThree threes are Nine, four threes are Twelve,\nFive threes are Fifteen on the juggling shelves!",
+          "Six threes are Eighteen, seven threes are Twenty-One,\nEight threes are Twenty-Four — the acrobatics have begun!\nNine threes are Twenty-Seven, ten threes are Thirty,\nThree Times Table magic, grand and hurdy-gurdy!"
+        ],
+        pronunciationKo: [
+          "롤 업, 롤 업 투 더 써커스 오브 쓰리즈!\n원 쓰리 이즈 쓰리, 투 쓰리즈 아 식스 위드 이즈!\n쓰리 쓰리즈 아 나인, 포 쓰리즈 아 트웰브,\n파이브 쓰리즈 아 피프틴 온 더 저글링 셸브즈!",
+          "식스 쓰리즈 아 에이틴, 세븐 쓰리즈 아 트웬티-원,\n에잇 쓰리즈 아 트웬티-포 — 디 애크로배틱스 해브 비건!\n나인 쓰리즈 아 트웬티-세븐, 텐 쓰리즈 아 써티,\n쓰리 타임즈 테이블 매직, 그랜드 앤 허디-거디!"
+        ],
+        lyricsKo: [
+          "모두 모이세요, 쓰리의 신기한 서커스 쇼!\n3 곱하기 1은 3, 3 곱하기 2는 6!\n3 곱하기 3은 9, 3 곱하기 4는 12,\n3 곱하기 5는 15 — 저글링 공이 하늘 높이!",
+          "3 곱하기 6은 18, 3 곱하기 7은 21,\n3 곱하기 8은 24 — 공중그네 묘기가 시작됐어!\n3 곱하기 9는 27, 3 곱하기 10은 30,\n화려한 3단 구구단 서커스 대성공!"
+        ]
+      },
+      {
+        id: "four-times-table",
+        numberLabel: "4×",
+        rangeGroup: "times-table",
+        tableBase: 4,
+        blockCount: 16,
+        color: "#22c55e",
+        titleEn: "Four Times Table (Four on the Floor)",
+        titleKo: "4단 구구단 노래 (포의 네모 디스코 파티)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One four is Four, two fours are Eight,\nThree fours are Twelve — the disco beat is great!\nFour fours are Sixteen, five fours are Twenty,\nFour on the floor withfunky squares a-plenty!",
+          "Six fours are Twenty-Four, seven fours are Twenty-Eight,\nEight fours are Thirty-Two — nobody's standing late!\nNine fours are Thirty-Six, ten fours are Forty,\nDance the Four Times Table at the square-dance party!"
+        ],
+        pronunciationKo: [
+          "원 포 이즈 포, 투 포즈 아 에잇,\n쓰리 포즈 아 트웰브 — 더 디스코 비트 이즈 그레잇!\n포 포즈 아 식스틴, 파이브 포즈 아 트웬티,\n포 온 더 플로어 위드 펑키 스퀘어즈 어-플렌티!",
+          "식스 포즈 아 트웬티-포, 세븐 포즈 아 트웬티-에잇,\n에잇 포즈 아 써티-투 — 노바디즈 스탠딩 레잇!\n나인 포즈 아 써티-식스, 텐 포즈 아 포티,\n댄스 더 포 타임즈 테이블 앳 더 스퀘어-댄스 파티!"
+        ],
+        lyricsKo: [
+          "4 곱하기 1은 4, 4 곱하기 2는 8,\n4 곱하기 3은 12 — 신나는 디스코 리듬에 맞춰!\n4 곱하기 4는 16, 4 곱하기 5는 20,\n반짝이는 네모 무대 위에서 춤을 춰요!",
+          "4 곱하기 6은 24, 4 곱하기 7은 28,\n4 곱하기 8은 32 — 모두 함께 스텝을 밟아!\n4 곱하기 9는 36, 4 곱하기 10은 40,\n포와 함께하는 신나는 4단 구구단 파티!"
+        ]
+      },
+      {
+        id: "five-times-table",
+        numberLabel: "5×",
+        rangeGroup: "times-table",
+        tableBase: 5,
+        blockCount: 25,
+        color: "#0ea5e9",
+        titleEn: "Five Times Table (Five's Rock Star Stage)",
+        titleKo: "5단 구구단 노래 (파이브의 록스타 콘서트)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One five is Five, two fives are Ten,\nThree fives are Fifteen — turn the amp to ten!\nFour fives are Twenty, five fives are Twenty-Five,\nFive Times Table keeps the stadium alive!",
+          "Six fives are Thirty, seven fives are Thirty-Five,\nEight fives are Forty — watch the吉他 dive!\nNine fives are Forty-Five, ten fives are Fifty,\nHigh-five rockstars, fast and nifty!"
+        ],
+        pronunciationKo: [
+          "원 파이브 이즈 파이브, 투 파이브즈 아 텐,\n쓰리 파이브즈 아 피프틴 — 턴 디 앰프 투 텐!\n포 파이브즈 아 트웬티, 파이브 파이브즈 아 트웬티-파이브,\n파이브 타임즈 테이블 킵스 더 스타디움 얼라이브!",
+          "식스 파이브즈 아 써티, 세븐 파이브즈 아 써티-파이브,\n에잇 파이브즈 아 포티 — 워치 더 기타 다이브!\n나인 파이브즈 아 포티-파이브, 텐 파이브즈 아 피프티,\n하이-파이브 록스타즈, 패스트 앤 니프티!"
+        ],
+        lyricsKo: [
+          "5 곱하기 1은 5, 5 곱하기 2는 10,\n5 곱하기 3은 15 — 볼륨을 높여라!\n5 곱하기 4는 20, 5 곱하기 5는 25,\n5단 구구단 노래로 공연장이 들썩들썩!",
+          "5 곱하기 6은 30, 5 곱하기 7은 35,\n5 곱하기 8은 40 — 멋진 기타 연주를 봐!\n5 곱하기 9는 45, 5 곱하기 10은 50,\n하이파이브 록스타와 함께 5단 마스터!"
+        ]
+      },
+      {
+        id: "six-times-table",
+        numberLabel: "6×",
+        rangeGroup: "times-table",
+        tableBase: 6,
+        blockCount: 18,
+        color: "#6d28d9",
+        titleEn: "Six Times Table (Six's Super Remix)",
+        titleKo: "6단 구구단 노래 (식스의 주사위 리믹스 쇼)",
+        season: "Season 8 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "Roll the dice and spin the mix:\nOne six is Six, two sixes are Twelve!\nThree sixes are Eighteen, four sixes are Twenty-Four,\nFive sixes are Thirty — let's roll some more!",
+          "Six sixes are Thirty-Six — a giant square!\nSeven sixes are Forty-Two, Eight sixes are Forty-Eight in the air!\nNine sixes are Fifty-Four, ten sixes are Sixty,\nSix Times Table remix, bold and nifty!"
+        ],
+        pronunciationKo: [
+          "롤 더 다이스 앤 스핀 더 믹스:\n원 식스 이즈 식스, 투 식시즈 아 트웰브!\n쓰리 식시즈 아 에이틴, 포 식시즈 아 트웬티-포,\n파이브 식시즈 아 써티 — 렛츠 롤 썸 모어!",
+          "식스 식시즈 아 써티-식스 — 어 자이언트 스퀘어!\n세븐 식시즈 아 포티-투, 에잇 식시즈 아 포티-에잇 인 디 에어!\n나인 식시즈 아 피프티-포, 텐 식시즈 아 식스티,\n식스 타임즈 테이블 리믹스, 볼드 앤 니프티!"
+        ],
+        lyricsKo: [
+          "주사위를 굴려 신나는 리믹스를 시작해:\n6 곱하기 1은 6, 6 곱하기 2는 12!\n6 곱하기 3은 18, 6 곱하기 4는 24,\n6 곱하기 5는 30 — 멈추지 말고 더 굴려봐!",
+          "6 곱하기 6은 36 — 큼직한 정사각형!\n6 곱하기 7은 42, 6 곱하기 8은 48!\n6 곱하기 9는 54, 6 곱하기 10은 60,\n식스의 리믹스 쇼로 6단 구구단도 척척!"
+        ]
+      },
+      {
+        id: "seven-times-table",
+        numberLabel: "7×",
+        rangeGroup: "times-table",
+        tableBase: 7,
+        blockCount: 21,
+        blockColors: ["#e62429","#ff7b00","#ffd000","#2ec44d","#1890ff","#5b3cc4","#b538d5"],
+        color: "linear-gradient(135deg,#e62429,#ff7b00,#ffd000,#2ec44d,#1890ff,#5b3cc4,#b538d5)",
+        titleEn: "Seven Times Table (Sail the Seven Seas)",
+        titleKo: "7단 구구단 노래 (무지개 바다 항해 - English Only)",
+        season: "Season 8 • Times Tables",
+        hasKorean: false,
+        meaningKo: "행운의 선장 세븐(7)과 함께 일곱 빛깔 바다를 항해하며 7×1=7부터 7×10=70까지 7단 곱셈표를 신나는 뱃노래 리듬으로 배우는 곡입니다.",
+        lyricsEn: [
+          "Hoist the rainbow sail upon the breeze:\nOne seven is Seven, two sevens are Fourteen!\nThree sevens are Twenty-One, four sevens are Twenty-Eight,\nFive sevens are Thirty-Five — the voyage is great!",
+          "Six sevens are Forty-Two, seven sevens are Forty-Nine,\nEight sevens are Fifty-Six — rainbow treasures shine!\nNine sevens are Sixty-Three, ten sevens are Seventy,\nSailing with the Seven Times Table across the sea!"
+        ],
+        pronunciationKo: [
+          "호이스트 더 레인보우 세일 어폰 더 브리즈:\n원 세븐 이즈 세븐, 투 세븐즈 아 포틴!\n쓰리 세븐즈 아 트웬티-원, 포 세븐즈 아 트웬티-에잇,\n파이브 세븐즈 아 써티-파이브 — 더 보야지 이즈 그레잇!",
+          "식스 세븐즈 아 포티-투, 세븐 세븐즈 아 포티-나인,\n에잇 세븐즈 아 피프티-식스 — 레인보우 트레저즈 샤인!\n나인 세븐즈 아 식스티-쓰리, 텐 세븐즈 아 세븐티,\n세일링 위드 더 세븐 타임즈 테이블 어크로스 더 씨!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "eight-times-table",
+        numberLabel: "8×",
+        rangeGroup: "times-table",
+        tableBase: 8,
+        blockCount: 24,
+        color: "#db2777",
+        titleEn: "Eight Times Table (Super Octo-Groove)",
+        titleKo: "8단 구구단 노래 (옥토블럭 슈퍼 그루브)",
+        season: "Season 8 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One eight is Eight, two eights are Sixteen,\nThree eights are Twenty-Four — the grooviest hero seen!\nFour eights are Thirty-Two, five eights are Forty,\nOctoblock's Eight Times Table is super sporty!",
+          "Six eights are Forty-Eight, seven eights are Fifty-Six,\nEight eights are Sixty-Four — check out my octo-tricks!\nNine eights are Seventy-Two, ten eights are Eighty,\nEight arms counting up, strong and weighty!"
+        ],
+        pronunciationKo: [
+          "원 에잇 이즈 에잇, 투 에잇츠 아 식스틴,\n쓰리 에잇츠 아 트웬티-포 — 더 그루비이스트 히어로 씬!\n포 에잇츠 아 써티-투, 파이브 에잇츠 아 포티,\n옥토블럭스 에잇 타임즈 테이블 이즈 슈퍼 스포티!",
+          "식스 에잇츠 아 포티-에잇, 세븐 에잇츠 아 피프티-식스,\n에잇 에잇츠 아 식스티-포 — 체크 아웃 마이 옥토-트릭스!\n나인 에잇츠 아 세븐티-투, 텐 에잇츠 아 에이티,\n에잇 암즈 카운팅 업, 스트롱 앤 웨이티!"
+        ],
+        lyricsKo: [
+          "8 곱하기 1은 8, 8 곱하기 2는 16,\n8 곱하기 3은 24 — 리듬 타는 슈퍼 영웅 옥토블럭!\n8 곱하기 4는 32, 8 곱하기 5는 40,\n옥토블럭의 8단 구구단 그루브에 몸을 맡겨봐!",
+          "8 곱하기 6은 48, 8 곱하기 7은 56,\n8 곱하기 8은 64 — 여덟 팔로 펼치는 멋진 재주!\n8 곱하기 9는 72, 8 곱하기 10은 80,\n든든한 팔다리 여덟 개로 8단 구구단 완주!"
+        ]
+      },
+      {
+        id: "nine-times-table",
+        numberLabel: "9×",
+        rangeGroup: "times-table",
+        tableBase: 9,
+        blockCount: 27,
+        color: "#475569",
+        titleEn: "Nine Times Table (Nine's Magic Pattern)",
+        titleKo: "9단 구구단 노래 (나인의 신기한 규칙 타워)",
+        season: "Season 8 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One nine is Nine, two nines are Eighteen,\nThree nines are Twenty-Seven — the neatest pattern seen!\nFour nines are Thirty-Six, five nines are Forty-Five,\nTens go up and Ones go down as the Nines arrive!",
+          "Six nines are Fifty-Four, seven nines are Sixty-Three,\nEight nines are Seventy-Two — count along with me!\nNine nines are Eighty-One, ten nines are Ninety,\nNine Times Table tower standing mighty!"
+        ],
+        pronunciationKo: [
+          "원 나인 이즈 나인, 투 나인즈 아 에이틴,\n쓰리 나인즈 아 트웬티-세븐 — 더 니티스트 패턴 씬!\n포 나인즈 아 써티-식스, 파이브 나인즈 아 포티-파이브,\n텐즈 고 업 앤 원즈 고 다운 애즈 더 나인즈 어라이브!",
+          "식스 나인즈 아 피프티-포, 세븐 나인즈 아 식스티-쓰리,\n에잇 나인즈 아 세븐티-투 — 카운트 얼롱 위드 미!\n나인 나인즈 아 에이티-원, 텐 나인즈 아 나인티,\n나인 타임즈 테이블 타워 스탠딩 마이티!"
+        ],
+        lyricsKo: [
+          "9 곱하기 1은 9, 9 곱하기 2는 18,\n9 곱하기 3은 27 — 세상에서 제일 신기한 규칙!\n9 곱하기 4는 36, 9 곱하기 5는 45,\n십의 자리는 1씩 커지고 일의 자리는 1씩 작아지지!",
+          "9 곱하기 6은 54, 9 곱하기 7은 63,\n9 곱하기 8은 72 — 나랑 함께 세어 봐!\n9 곱하기 9는 81, 9 곱하기 10은 90,\n높고 튼튼한 9단 구구단 타워 완성!"
+        ]
+      },
+      {
+        id: "ten-times-table",
+        numberLabel: "10×",
+        rangeGroup: "times-table",
+        tableBase: 10,
+        blockCount: 30,
+        color: "#dc2626",
+        titleEn: "Ten Times Table (Rocket Tens Launch)",
+        titleKo: "10단 구구단 노래 (텐의 로켓 발사 구구단)",
+        season: "Season 5 • Times Tables",
+        hasKorean: true,
+        lyricsEn: [
+          "One ten is Ten, two tens are Twenty,\nThree tens are Thirty — rocket power a-plenty!\nFour tens are Forty, five tens are Fifty,\nCounting up in Tens is super fast and nifty!",
+          "Six tens are Sixty, seven tens are Seventy,\nEight tens are Eighty, zooming through the galaxy!\nNine tens are Ninety, ten tens are One Hundred,\nTen Times Table — to the stars we've thundered!"
+        ],
+        pronunciationKo: [
+          "원 텐 이즈 텐, 투 텐즈 아 트웬티,\n쓰리 텐즈 아 써티 — 로켓 파워 어-플렌티!\n포 텐즈 아 포티, 파이브 텐즈 아 피프티,\n카운팅 업 인 텐즈 이즈 슈퍼 패스트 앤 니프티!",
+          "식스 텐즈 아 식스티, 세븐 텐즈 아 세븐티,\n에잇 텐즈 아 에이티, 주밍 쓰루 더 갤럭시!\n나인 텐즈 아 나인티, 텐 텐즈 아 원 헌드레드,\n텐 타임즈 테이블 — 투 더 스타즈 위브 썬더드!"
+        ],
+        lyricsKo: [
+          "10 곱하기 1은 10, 10 곱하기 2는 20,\n10 곱하기 3은 30 — 로켓 에너지가 넘쳐흐른다!\n10 곱하기 4는 40, 10 곱하기 5는 50,\n십씩 묶어서 세면 정말 빠르고 멋지지!",
+          "10 곱하기 6은 60, 10 곱하기 7은 70,\n10 곱하기 8은 80, 은하수를 가로질러 쌩쌩!\n10 곱하기 9는 90, 10 곱하기 10은 100,\n10단 구구단 로켓을 타고 별나라까지 날아올라!"
         ]
       },
       {
@@ -1441,6 +1842,48 @@
           "애니 웨이 유 스플릿 미, 애니 웨이 위 플레이,\n프렌즈 오브 텐 컴 투게더 투 세이브 더 데이!"
         ],
         lyricsKo: null
+      },
+      {
+        id: "counting-sheep-song",
+        numberLabel: "Sheep",
+        rangeGroup: "special",
+        blockCount: 6,
+        color: "#0284c7",
+        titleEn: "Counting Sheep (Dividing into Equal Groups)",
+        titleKo: "잠들기 전 양 세기 (똑같이 나누기 - English Only)",
+        season: "Season 2 Special",
+        hasKorean: false,
+        meaningKo: "여섯 마리의 양(Six sheep)을 울타리 안에 1마리씩 6칸, 2마리씩 3칸, 3마리씩 2칸으로 똑같이 나누어 재우며 나눗셈과 약수의 기초를 배우는 영어 전용 자장가입니다.",
+        lyricsEn: [
+          "Six little sheep jumping over the gate,\nTime for bed, it's getting late!\nTwo pens of three, or three pens of two,\nCounting the sheep until sleep comes to you!",
+          "Every pen equal, cozy and tight,\nSix little sheep say goodnight, goodnight!"
+        ],
+        pronunciationKo: [
+          "식스 리틀 쉽 점핑 오버 더 게잇,\n타임 포 베드, 잇츠 게팅 레잇!\n투 펜즈 오브 쓰리, 오어 쓰리 펜즈 오브 투,\n카운팅 더 쉽 언틸 슬립 컴즈 투 유!",
+          "에브리 펜 이퀄, 코지 앤 타잇,\n식스 리틀 쉽 세이 굿나잇, 굿나잇!"
+        ],
+        lyricsKo: null
+      },
+      {
+        id: "how-many-ways-song",
+        numberLabel: "Ways",
+        rangeGroup: "special",
+        blockCount: 8,
+        color: "#059669",
+        titleEn: "How Many Ways Can We Make It?",
+        titleKo: "몇 가지 방법으로 만들까? (English Only)",
+        season: "Season 4 Special",
+        hasKorean: false,
+        meaningKo: "하나의 숫자를 덧셈, 뺄셈, 곱셈, 직사각형 배열 등 얼마나 다양한 조합과 방법으로 만들 수 있는지 탐구하는 영어 전용 곡입니다.",
+        lyricsEn: [
+          "Add them up or take away,\nFind a brand new way to play!\nMultiply the rows so neat,\nHow many ways can we make the beat?",
+          "Split the blocks and rearrange,\nEvery number loves to change!"
+        ],
+        pronunciationKo: [
+          "애드 뎀 업 오어 테이크 어웨이,\n파인드 어 브랜드 뉴 웨이 투 플레이!\n멀티플라이 더 로우즈 쏘 니트,\n하우 매니 웨이즈 캔 위 메이크 더 비트?",
+          "스플릿 더 블럭스 앤 리어레인지,\n에브리 넘버 러브즈 투 체인지!"
+        ],
+        lyricsKo: null
       }
     ];
 
@@ -1470,12 +1913,13 @@
       searchQuery: "",
       langMode: "line",       // 'line' | 'both' | 'en' | 'ko'
       catalogFilter: "all",   // 'all' | 'favorites' | 'bilingual' | 'en-only'
-      rangeFilter: "all",     // 'all' | '1-5' | '6-10' | '11-20' | 'special'
+      rangeFilter: "all",     // 'all' | 'times-table' | '1-5' | '6-10' | '11-20' | 'special'
       showPronunciation: true,
       fontScale: "1",
       favorites: loadFavorites(),
       selectedSongId: SONGS_DATA[0].id,
-      selectedArrayCols: null // dynamic columns for block array visualizer
+      selectedArrayCols: null, // dynamic columns for block array visualizer
+      selectedMultiplier: 3    // default multiplier (1..10) for Times Table visualizer
     };
 
     // Restore saved settings
@@ -1650,6 +2094,45 @@
     }
 
     function buildVisualizerHtml(song) {
+      if (song.tableBase) {
+        const base = song.tableBase;
+        const mult = state.selectedMultiplier || 3;
+        const total = base * mult;
+        const isMini = total > 30;
+
+        const multBtnsHtml = Array.from({ length: 10 }, (_, i) => i + 1)
+          .map((m) => {
+            const isAct = m === mult;
+            return `<button type="button" class="array-btn mult-btn ${isAct ? "active" : ""}" data-mult="${m}">${base} &times; ${m} = ${base * m}</button>`;
+          })
+          .join("");
+
+        const unitsHtml = Array.from({ length: total })
+          .map((_, idx) => {
+            let bg = song.color.startsWith("linear-gradient") ? "#e62429" : song.color;
+            if (Array.isArray(song.blockColors) && song.blockColors.length > 0) {
+              bg = song.blockColors[idx % song.blockColors.length];
+            }
+            return `<span class="nb-unit ${isMini ? "mini" : ""}" style="background:${bg}" title="${base} × ${Math.floor(idx / base) + 1}"></span>`;
+          })
+          .join("");
+
+        return `
+          <div class="visualizer-box" aria-label="인터랙티브 구구단 블록 비주얼라이저">
+            <div class="visualizer-info">
+              <div class="visualizer-title">
+                <span>&#10006; 인터랙티브 ${base}단 구구단 블록 조립기 (${base} &times; ${mult} = 총 ${total}블록)</span>
+              </div>
+              <div class="visualizer-sub">곱셈 버튼을 눌러 ${base}단(${base}씩 ${mult}묶음) 블록이 쌓이는 모습을 확인해 보세요!</div>
+              <div class="array-btns">${multBtnsHtml}</div>
+            </div>
+            <div class="block-grid-stage" style="grid-template-columns: repeat(${base}, auto);">
+              ${unitsHtml}
+            </div>
+          </div>
+        `;
+      }
+
       const count = song.blockCount || 1;
       const isHundred = count === 100;
       const pairs = isHundred
@@ -1920,6 +2403,13 @@
     });
 
     lyricsViewer.addEventListener("click", (e) => {
+      const multBtn = e.target.closest(".mult-btn");
+      if (multBtn) {
+        state.selectedMultiplier = Number(multBtn.dataset.mult);
+        renderLyricsViewer();
+        return;
+      }
+
       const arrayBtn = e.target.closest(".array-btn");
       if (arrayBtn) {
         state.selectedArrayCols = Number(arrayBtn.dataset.cols);
@@ -2013,13 +2503,18 @@
       // 2. Song Catalog & Line Alignment Integrity
       const totalSongs = SONGS_DATA.length;
       const enOnlySongs = SONGS_DATA.filter((s) => !s.hasKorean);
+      const timesTableSongs = SONGS_DATA.filter((s) => s.rangeGroup === "times-table");
       const lineMismatch = SONGS_DATA.filter((s) => {
         const enCount = s.lyricsEn.join("\n").split("\n").length;
         const pronCount = (s.pronunciationKo || []).join("\n").split("\n").length;
         const koCount = s.hasKorean ? (s.lyricsKo || []).join("\n").split("\n").length : enCount;
         return enCount !== pronCount || enCount !== koCount;
       });
-      assert("수록곡 카탈로그 및 한/영/발음 줄 수 1:1 매칭", totalSongs === 22 && enOnlySongs.length === 5 && lineMismatch.length === 0, `total=${totalSongs}, enOnly=${enOnlySongs.length}, mismatch=${lineMismatch.length}`);
+      assert(
+        "수록곡 41곡(구구단 10곡 포함) 및 한/영/발음 줄 수 1:1 매칭",
+        totalSongs === 41 && timesTableSongs.length === 10 && enOnlySongs.length === 8 && lineMismatch.length === 0,
+        `total=${totalSongs}, timesTable=${timesTableSongs.length}, enOnly=${enOnlySongs.length}, mismatch=${lineMismatch.length}`
+      );
 
       // 3. Upgrade 1: Line-by-Line Sync + Pronunciation + Font Scale
       assert("한줄 대조(Line Sync) 및 발음 가이드 렌더링", document.querySelectorAll(".sync-line-pair").length > 0 && document.querySelectorAll(".sync-line-pron").length > 0);
@@ -2036,7 +2531,19 @@
       const fallbackEnCol = document.querySelector(".stanza-line-en");
       assert("영어 전용 곡(EN-Only) 한글 모드 폴백 & 우리말 뜻 해설 표시", Boolean(noticeEl && meaningEl && fallbackEnCol));
 
-      // 5. Upgrade 3: Interactive Block Visualizer & Favorites
+      // 5. Times Tables Filter & Interactive Multiplier Visualizer
+      const ttChip = document.querySelector('.range-chip[data-range="times-table"]');
+      if (ttChip) ttChip.click();
+      const renderedTtItems = document.querySelectorAll(".song-item").length;
+      const twoTtBtn = document.querySelector('.song-item[data-song-id="two-times-table"]');
+      if (twoTtBtn) twoTtBtn.click();
+      const mult4Btn = document.querySelector('.mult-btn[data-mult="4"]');
+      if (mult4Btn) mult4Btn.click();
+      const multUnits = document.querySelectorAll(".nb-unit").length;
+      assert("구구단(1단~10단) 필터 및 인터랙티브 곱셈 블록 조립기(2×4=8블록)", renderedTtItems === 10 && multUnits === 8, `ttItems=${renderedTtItems}, units=${multUnits}`);
+      document.querySelector('.range-chip[data-range="all"]').click();
+
+      // 6. Upgrade 3: Interactive Block Visualizer & Favorites
       const twelveBtn = document.querySelector('.song-item[data-song-id="twelve-rectangle-rays"]');
       if (twelveBtn) twelveBtn.click();
       document.querySelector('.lang-mode-btn[data-mode="line"]').click();
@@ -2050,11 +2557,11 @@
       if (favToggle) favToggle.click();
       assert("즐겨찾기 추가 및 로컬 상태 반영", state.favorites.includes("twelve-rectangle-rays"));
 
-      // 6. Search & Keyword Highlighting (<mark class="hl">)
-      searchInput.value = "Octoblock";
+      // 7. Search & Keyword Highlighting (<mark class="hl">)
+      searchInput.value = "Times Table";
       searchInput.dispatchEvent(new Event("input"));
       const hlMarks = document.querySelectorAll("mark.hl");
-      assert("실시간 통합 검색 및 키워드 하이라이팅(<mark>)", document.querySelectorAll(".song-item").length >= 1 && hlMarks.length >= 1, `marks=${hlMarks.length}`);
+      assert("실시간 통합 검색('Times Table') 및 키워드 하이라이팅(<mark>)", document.querySelectorAll(".song-item").length >= 10 && hlMarks.length >= 10, `marks=${hlMarks.length}`);
       clearSearchBtn.click();
 
       const reportEl = document.createElement("pre");
